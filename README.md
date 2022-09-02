@@ -42,7 +42,7 @@ python index.py
 
 ## Prometheus and grafana
 
-User: user 
+User: admin 
 Password: pass@123
 
 1. Connect prometheus ass data source with

@@ -1,10 +1,18 @@
 import os
 from flask import Flask
+import logging
+from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__)
 
+logging.basicConfig(level=logging.INFO)
+logging.info("Setting LOGLEVEL to INFO")
+
+metrics = PrometheusMetrics(app)
+metrics.info("app_info", "App Info LOCATEC", version='1.0')
 
 @app.route('/')
+@metrics.counter("testing","esta es mi prueba")
 def hello():
     return 'Hello, World!'
 

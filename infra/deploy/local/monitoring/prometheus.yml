@@ -17,7 +17,7 @@ scrape_configs:
     static_configs:
     - targets: ['example-prometheus:9090']
 
-  - job_name: 'flask-api'
+  - job_name: 'server'
     scrape_interval: 5s
     static_configs:
-      - targets: ['flask-api:5000']
+      - targets: ['server:5000']
