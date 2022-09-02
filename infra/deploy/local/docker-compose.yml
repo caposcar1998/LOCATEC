@@ -7,7 +7,8 @@ services:
       context: ../../../
       dockerfile: client/Dockerfile
     ports:
-       - "3000:3000"
+       - "8080:8080"
+    container_name: client
     networks:
       - locatec
 
@@ -18,6 +19,7 @@ services:
       dockerfile: server/Dockerfile
     ports:
       - "5000:5000"
+    container_name: server
     networks:
       - locatec
 
@@ -25,6 +27,7 @@ services:
 
   database:
     image: mariadb:10.7
+    container_name: database
     ports:
       - 3306:3306
     volumes:
@@ -33,6 +36,37 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_PASSWORD=root
       - MYSQL_USER=user
+    networks:
+      - locatec
+
+  prometheus:
+      image: prom/prometheus:latest
+      restart: unless-stopped
+      container_name: prometheus
+      ports:
+        - 9090:9090
+      volumes:
+        - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      command:
+        - '--config.file=/etc/prometheus/prometheus.yml'
+      networks:
+        - locatec
+
+  grafana:
+      image: grafana/grafana:latest
+      restart: unless-stopped
+      user: "472"
+      container_name: grafana
+      depends_on:
+        - prometheus
+      ports:
+        - 3000:3000
+      volumes:
+        - ./monitoring/datasource.yml:/etc/grafana/provisioning/datasource.yml
+      env_file:
+        - ./monitoring/config.monitoring
+      networks:
+        - locatec
 
 networks:
   locatec:
