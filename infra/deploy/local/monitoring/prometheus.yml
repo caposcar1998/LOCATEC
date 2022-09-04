@@ -15,7 +15,7 @@ scrape_configs:
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
     static_configs:
-    - targets: ['example-prometheus:9090']
+    - targets: ['prometheus:9090']
 
   - job_name: 'server'
     scrape_interval: 5s
