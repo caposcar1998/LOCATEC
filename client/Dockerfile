@@ -14,9 +14,5 @@ RUN npm install react-scripts@3.4.1 -g
 # add app
 COPY ./client ./
 
-RUN cp -R ./node_modules/.vite/deps_temp ./node_modules/.vite/deps
-
-RUN rm -R ./node_modules/.vite/deps_temp
-
 # start app
 CMD ["npm", "run", "dev"]

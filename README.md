@@ -51,6 +51,20 @@ Password: pass@123
 url: http://prometheus:9090
 ```
 
+## Run prod 
+
+1. On EC2
+
+```bash
+sudo yum update -y
+sudo yum install docker -y
+sudo service docker start
+git clone https://github.com/caposcar1998/LOCATEC.git
+sudo su
+sudo curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+```
+
+
 # References
 
 [Grafana](https://medium.com/swlh/generate-and-track-metrics-for-flask-api-applications-using-prometheus-and-grafana-55ddd39866f0)
