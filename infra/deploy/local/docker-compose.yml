@@ -7,7 +7,7 @@ services:
       context: ../../../
       dockerfile: client/Dockerfile
     ports:
-       - "8080:8080"
+       - "8080:80"
     container_name: client
     networks:
       - locatec
