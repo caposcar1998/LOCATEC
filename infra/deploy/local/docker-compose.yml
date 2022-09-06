@@ -5,9 +5,9 @@ services:
   client:
     build:
       context: ../../../
-      dockerfile: client/Dockerfile
+      dockerfile: infra/deploy/frontend/dev/Dockerfile
     ports:
-       - "8080:80"
+       - "8080:8080"
     container_name: client
     networks:
       - locatec
@@ -16,7 +16,7 @@ services:
   server:
     build: 
       context: ../../../
-      dockerfile: server/Dockerfile
+      dockerfile: infra/deploy/backend/dev/Dockerfile
     ports:
       - "5000:5000"
     container_name: server
