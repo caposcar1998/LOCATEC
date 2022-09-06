@@ -46,7 +46,7 @@ services:
       ports:
         - 9090:9090
       volumes:
-        - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+        - ../monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
       command:
         - '--config.file=/etc/prometheus/prometheus.yml'
       networks:
@@ -64,7 +64,7 @@ services:
       volumes:
         - ./monitoring/datasource.yml:/etc/grafana/provisioning/datasource.yml
       env_file:
-        - ./monitoring/config.monitoring
+        - ../monitoring/config.monitoring
       networks:
         - locatec
 
