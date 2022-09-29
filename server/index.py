@@ -27,7 +27,7 @@ def product_id(id):
     if request.method == 'DELETE':
         return product_controller.delete(id)
     if request.method == 'GET':
-        return product_controller.readOne(id)
+        return str(product_controller.readOne(id))
 
 
 @app.route('/product',methods = ['GET', 'POST'])
