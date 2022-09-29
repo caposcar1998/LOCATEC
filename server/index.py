@@ -33,7 +33,7 @@ def product_id(id):
 @app.route('/product',methods = ['GET', 'POST'])
 def product_():
     if request.method == 'GET':
-        return product_controller.readAllProducts()
+        return str(product_controller.readAllProducts())
     if request.method == 'POST':
         return product_controller.create(request.get_json())
 

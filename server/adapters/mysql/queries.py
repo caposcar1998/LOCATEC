@@ -13,7 +13,7 @@ class Queries:
 
 
     def create_product(self, product: ProductModel):
-        sql = f"INSERT INTO ${PRODUCT_DATABASE} (name, description, location, finder, color) VALUES (%s, %s, %s, %s, %s)"
+        sql = f"INSERT INTO {PRODUCT_DATABASE} (name, description, location, finder, color) VALUES (%s, %s, %s, %s, %s)"
         val = (product.name, product.description, product.location, product.finder, product.color)
         self.mycursor.execute(sql, val)
 
@@ -21,7 +21,7 @@ class Queries:
 
     def read_all_products(self) -> list:
         products_found = []
-        self.mycursor.execute(f"SELECT * FROM ${PRODUCT_DATABASE}")
+        self.mycursor.execute(f"SELECT * FROM {PRODUCT_DATABASE}")
 
         myresult = self.mycursor.fetchall()
 
@@ -32,7 +32,7 @@ class Queries:
 
     def read_product(self, id: int):
         products_found = []
-        sql = f"SELECT * FROM customers WHERE id =${id}"
+        sql = f"SELECT * FROM {PRODUCT_DATABASE} WHERE id ={id}"
 
         self.mycursor.execute(sql)
 
@@ -44,7 +44,7 @@ class Queries:
         return products_found[0]
 
     def delete_product(self, id: int) ->str :
-        sql = f"DELETE FROM ${PRODUCT_DATABASE} WHERE id = f{id}"
+        sql = f"DELETE FROM {PRODUCT_DATABASE} WHERE id = {id}"
 
         self.mycursor.execute(sql)
 
@@ -53,7 +53,7 @@ class Queries:
         return "ok"
 
     def edit_product(self, id: int, product: ProductModel) -> str:
-        sql = f"UPDATE ${PRODUCT_DATABASE} SET name = %s , description = %s, location = %s, finder = %s, color = %s WHERE id = ${id}"
+        sql = f"UPDATE {PRODUCT_DATABASE} SET name = %s , description = %s, location = %s, finder = %s, color = %s WHERE id = {id}"
         val = (product.name, product.description, product.location, product.finder, product.color)
 
         self.mycursor.execute(sql, val)
