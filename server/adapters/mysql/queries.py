@@ -14,10 +14,12 @@ class Queries:
 
     def create_product(self, product: ProductModel):
         sql = f"INSERT INTO {PRODUCT_DATABASE} (name, description, location, finder, color) VALUES (%s, %s, %s, %s, %s)"
-        val = (product.name, product.description, product.location, product.finder, product.color)
+        val = (product["name"], product["description"], product["location"], product["finder"], product["color"])
         self.mycursor.execute(sql, val)
 
         self.connection.commit()
+
+        return "ok"
 
     def read_all_products(self) -> list:
         products_found = []
@@ -54,7 +56,7 @@ class Queries:
 
     def edit_product(self, id: int, product: ProductModel) -> str:
         sql = f"UPDATE {PRODUCT_DATABASE} SET name = %s , description = %s, location = %s, finder = %s, color = %s WHERE id = {id}"
-        val = (product.name, product.description, product.location, product.finder, product.color)
+        val = (product["name"], product["description"], product["location"], product["finder"], product["color"])
 
         self.mycursor.execute(sql, val)
 

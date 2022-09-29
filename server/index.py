@@ -20,9 +20,9 @@ product_controller = product.Product(mysql_database)
 
 
 @metrics.counter("testing","esta es mi prueba")
-@app.route('/product/<id>',methods = ['UPDATE', 'DELETE', 'GET'])
+@app.route('/product/<id>',methods = ['PUT', 'DELETE', 'GET'])
 def product_id(id):
-    if request.method == 'UPDATE':
+    if request.method == 'PUT':
         return product_controller.update(id,request.get_json())
     if request.method == 'DELETE':
         return product_controller.delete(id)
