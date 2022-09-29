@@ -3,7 +3,8 @@ import mysql.connector
 
 def connect_database():
     return mysql.connector.connect(
-    host="localhost",
+    host="database",
     user="user",
-    password="root"
+    password="root",
+    database="locatec"
     )
