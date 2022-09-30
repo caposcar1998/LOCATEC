@@ -13,7 +13,7 @@ class Product(ProductInterface):
     def delete(self, id: str)->str:
         return self.database.delete_product(id)
 
-    def update(self, product: ProductModel, str)->str:
+    def update(self, product: ProductModel, id: str)->str:
         return self.database.edit_product(id, product)
 
     def readAllProducts(self)->list:
