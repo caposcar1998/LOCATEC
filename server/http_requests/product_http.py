@@ -8,7 +8,8 @@ class ProductHTTP():
 
     def create_product_request(self, body):
         try:
-            self.controller_product.create()
+            self.controller_product.create(body)
+            return self.response_format(201, "ok")
         except Exception as e:
             return self.response_format(500, str(e))
 

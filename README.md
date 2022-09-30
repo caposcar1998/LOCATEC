@@ -51,7 +51,7 @@ Password: pass@123
 url: http://prometheus:9090
 ```
 
-## Run prod 
+## Run prod
 
 1. On EC2
 
@@ -76,11 +76,132 @@ Get all products on locatec
 
 **Response**
 
-```
+```bash
+
 // Objects found
 {
     "code": 200,
     "result: []
+}
+
+or
+
+// Error
+{
+    "code": 500,
+    "result: error
+}
+
+```
+
+### POST /product
+
+Create product on locatec
+
+**Parameters**
+
+body params: 
+
+```
+{
+    {"name": str , "description": str, "location": str, "finder": str, "color": str}
+}
+```
+
+**Response**
+
+```bash
+
+// Object created
+{
+    "code": 201,
+    "result: ok
+}
+
+or
+
+// Error
+{
+    "code": 500,
+    "result: error
+}
+
+```
+
+### GET /delete/{id}
+
+Delete one product on locatec
+
+**Parameters**
+
+
+**Response**
+
+```bash
+// Object deleted
+{
+    "code": 200,
+    "result: "deleted"
+}
+
+or
+
+// Error
+{
+    "code": 500,
+    "result: error
+}
+
+```
+
+### PUT /product/{id}
+
+Update product on locatec
+
+**Parameters**
+
+body params:
+
+```bash
+{
+    {"name": str , "description": str, "location": str, "finder": str, "color": str}
+}
+```
+
+**Response**
+
+```bash
+
+// Object updated
+{
+    "code": 200,
+    "result: ok
+}
+
+or
+
+// Error
+{
+    "code": 500,
+    "result: error
+}
+
+```
+
+### GET /product/{id}
+
+Returns one product
+
+**Parameters**
+
+
+**Response**
+
+```
+// Object obtained
+{
+    "code": 200,
+    "result: product
 }
 
 or
