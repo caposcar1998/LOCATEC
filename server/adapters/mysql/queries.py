@@ -27,8 +27,16 @@ class Queries:
 
         myresult = self.mycursor.fetchall()
 
-        for product in myresult:
-            products_found.append(product)
+        for res in myresult:
+            products_found.append({
+            "ID": res[0],
+            "Name": res[1],
+            "Description": res[2],
+            'Location': res[3],
+            'Finder': res[4],
+            'Color': res[5],
+            'CreatedAt': res[6]
+        })
 
         return products_found
 
@@ -43,7 +51,19 @@ class Queries:
         for product in myresult:
             products_found.append(product)
 
-        return products_found[0]
+        res = products_found[0]
+        
+        product_return = {
+            "ID": res[0],
+            "Name": res[1],
+            "Description": res[2],
+            'Location': res[3],
+            'Finder': res[4],
+            'Color': res[5],
+            'CreatedAt': res[6]
+        }
+
+        return product_return
 
     def delete_product(self, id: int) ->str :
         sql = f"DELETE FROM {PRODUCT_DATABASE} WHERE id = {id}"

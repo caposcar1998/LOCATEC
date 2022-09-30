@@ -13,3 +13,4 @@ CREATE TABLE IF NOT EXISTS product(
 INSERT INTO product ( Name, Description, Location, Finder, Color )
         VALUES
             ("Mochila","Una mochila fabulosa","Cenote","Oscar","Roja");
+            ("Ipad","Ipad grande ","Aulas 2","Raul","Gris");
