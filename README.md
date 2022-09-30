@@ -64,6 +64,34 @@ sudo su
 sudo curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 ```
 
+## API
+
+
+### GET /product
+
+Get all products on locatec
+
+**Parameters**
+
+
+**Response**
+
+```
+// Objects found
+{
+    "code": 200,
+    "result: []
+}
+
+or
+
+// Error
+{
+    "code": 500,
+    "result: error
+}
+
+```
 
 # References
 
