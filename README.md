@@ -102,9 +102,9 @@ Create product on locatec
 
 body params: 
 
-```
+```bash
 {
-    {"name": str , "description": str, "location": str, "finder": str, "color": str}
+    {"name": str , "description": str, "location": str, "finder": int, "color": str, "looker": int}
 }
 ```
 
@@ -164,7 +164,7 @@ body params:
 
 ```bash
 {
-    {"name": str , "description": str, "location": str, "finder": str, "color": str}
+    {"name": str , "description": str, "location": str, "finder": int, "color": str, "looker": int}
 }
 ```
 
@@ -202,6 +202,32 @@ Returns one product
 {
     "code": 200,
     "result: product
+}
+
+or
+
+// Error
+{
+    "code": 500,
+    "result: error
+}
+
+```
+
+### PUT /product/{id}/status/{status}/looker/{1}
+
+Changes status product found
+
+**Parameters**
+
+
+**Response**
+
+```
+// Object obtained
+{
+    "code": 200,
+    "result: ok
 }
 
 or
