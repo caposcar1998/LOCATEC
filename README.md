@@ -128,7 +128,7 @@ or
 
 ```
 
-### GET /delete/{id}
+### DELETE /product/{id}
 
 Delete one product on locatec
 
