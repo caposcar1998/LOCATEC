@@ -104,7 +104,7 @@ body params:
 
 ```bash
 {
-    {"name": str , "description": str, "location": str, "finder": int, "color": str, "looker": int}
+    {"name": str , "description": str, "location": str, "finder": int, "color": str, "looker": int, "category": str}
 }
 ```
 

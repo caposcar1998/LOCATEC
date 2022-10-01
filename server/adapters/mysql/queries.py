@@ -13,8 +13,8 @@ class Queries:
 
 
     def create_product(self, product: ProductModel):
-        sql = f"INSERT INTO {PRODUCT_DATABASE} (Name, Description, Location, FinderID, Color, LookerID, Found) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-        val = (product["name"], product["description"], product["location"], product["finder"], product["color"], product["looker"], False)
+        sql = f"INSERT INTO {PRODUCT_DATABASE} (Name, Description, Location, FinderID, Color, LookerID, Found, Category) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+        val = (product["name"], product["description"], product["location"], product["finder"], product["color"], product["looker"], False, product['category'])
         self.mycursor.execute(sql, val)
 
         self.connection.commit()
@@ -37,7 +37,8 @@ class Queries:
             'Color': res[5],
             'CreatedAt': res[6],
             'Looker': res[7],
-            'Found': res[8]
+            'Found': res[8],
+            'Category': res[9]
         })
 
         return products_found
@@ -64,7 +65,8 @@ class Queries:
             'Color': res[5],
             'CreatedAt': res[6],
             'Looker': res[7],
-            'Found': res[8]
+            'Found': res[8],
+            'Category': res[9]
         }
 
         return product_return
