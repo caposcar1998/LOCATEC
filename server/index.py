@@ -32,6 +32,11 @@ def product_id(id):
         return product_http.retrieve_one_product_request(id)
 
 
+@app.route('/product/<id>/status/<status>/looker/<looker>',methods = ['PUT'])
+def product_update(id, status, looker):
+    if request.method == 'PUT':
+        return product_http.change_status_product(id, status, looker )
+
 @app.route('/product',methods = ['GET', 'POST'])
 def product_():
     if request.method == 'GET':

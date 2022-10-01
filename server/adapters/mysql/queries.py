@@ -13,8 +13,8 @@ class Queries:
 
 
     def create_product(self, product: ProductModel):
-        sql = f"INSERT INTO {PRODUCT_DATABASE} (name, description, location, finder, color) VALUES (%s, %s, %s, %s, %s)"
-        val = (product["name"], product["description"], product["location"], product["finder"], product["color"])
+        sql = f"INSERT INTO {PRODUCT_DATABASE} (Name, Description, Location, FinderID, Color, LookerID, Found) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+        val = (product["name"], product["description"], product["location"], product["finder"], product["color"], product["looker"], False)
         self.mycursor.execute(sql, val)
 
         self.connection.commit()
@@ -35,7 +35,9 @@ class Queries:
             'Location': res[3],
             'Finder': res[4],
             'Color': res[5],
-            'CreatedAt': res[6]
+            'CreatedAt': res[6],
+            'Looker': res[7],
+            'Found': res[8]
         })
 
         return products_found
@@ -60,7 +62,9 @@ class Queries:
             'Location': res[3],
             'Finder': res[4],
             'Color': res[5],
-            'CreatedAt': res[6]
+            'CreatedAt': res[6],
+            'Looker': res[7],
+            'Found': res[8]
         }
 
         return product_return
@@ -75,10 +79,18 @@ class Queries:
         return "ok"
 
     def edit_product(self, id: int, product: ProductModel) -> str:
-        sql = f"UPDATE {PRODUCT_DATABASE} SET name = %s , description = %s, location = %s, finder = %s, color = %s WHERE id = {id}"
-        val = (product["name"], product["description"], product["location"], product["finder"], product["color"])
+        sql = f"UPDATE {PRODUCT_DATABASE} SET Name = %s , Description = %s, Location = %s, FinderID = %s, Color = %s, LookerID = %s WHERE id = {id}"
+        val = (product["name"], product["description"], product["location"], product["finder"], product["color"], product["looker"])
 
         self.mycursor.execute(sql, val)
+
+        self.connection.commit()
+
+        return "ok"
+
+    def change_status_product(self, id, found: bool, looker_id: int) -> str:
+        sql = f"UPDATE {PRODUCT_DATABASE} SET LookerID = {looker_id}, Found = {found} WHERE id = {id}"
+        self.mycursor.execute(sql)
 
         self.connection.commit()
 

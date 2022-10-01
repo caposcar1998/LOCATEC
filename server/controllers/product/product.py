@@ -21,3 +21,6 @@ class Product(ProductInterface):
 
     def readOne(self, id: str)->ProductModel:
         return self.database.read_product(id)
+
+    def changeStatus(self, id, status, looker_id)->str:
+        return self.database.change_status_product(id, status, looker_id)
