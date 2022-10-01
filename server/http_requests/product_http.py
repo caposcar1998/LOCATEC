@@ -29,7 +29,8 @@ class ProductHTTP():
 
     def update_product_request(self, id, body):
         try:
-            self.controller_product.update(body, id)
+            res = self.controller_product.update(body, id)
+            return self.response_format(200, res)
         except Exception as e:
             return self.response_format(500, str(e))
 
@@ -37,6 +38,13 @@ class ProductHTTP():
         try:
             id = int(id)
             res =  self.controller_product.readOne(id)
+            return self.response_format(200, res)
+        except Exception as e:
+            return self.response_format(500, str(e))
+
+    def change_status_product(self, id, status, looker_id):
+        try:
+            res = self.controller_product.changeStatus(id, status, looker_id)
             return self.response_format(200, res)
         except Exception as e:
             return self.response_format(500, str(e))

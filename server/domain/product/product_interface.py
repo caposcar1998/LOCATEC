@@ -22,3 +22,7 @@ class ProductInterface(ABC):
     @abstractmethod
     def readOne(self, id)->ProductModel:
         pass
+
+    @abstractmethod
+    def changeStatus(self, status, looker_id)->str:
+        pass
