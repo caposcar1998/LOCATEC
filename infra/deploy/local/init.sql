@@ -6,8 +6,6 @@ CREATE TABLE IF NOT EXISTS tecusers(
     Name VARCHAR(50),
     Tuiton VARCHAR(20),
     Rol    VARCHAR(20),
-    idLogin VARCHAR(100),
-    Isadmin BOOLEAN,
     CreatedAt       TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -26,13 +24,13 @@ CREATE TABLE IF NOT EXISTS product(
     FOREIGN KEY (LookerID) REFERENCES tecusers(ID)
 );
 
-INSERT INTO tecusers (Name, Tuiton, Rol, idLogin, Isadmin)
+INSERT INTO tecusers (Name, Tuiton, Rol)
         VALUES
-            ("Oscar Contreras Palacios", "A01655772", "Student", "12342354324534", 1),
-            ("Óscar Alfredo Belmont Rodríguez", "A01654861", "Student", "12342354324534", 1),
-            ("David Arturo Villanueva San Juan", "A01337636", "Student", "12342354324534", 1),
-            ("Óscar Vargas Pérez", "A01657110", "Student", "12342354324534", 0),
-            ("Raul", "A12347572", "Proffessor", "09876754321" ,0);
+            ("Oscar Contreras Palacios", "A01655772", "Student"),
+            ("Óscar Alfredo Belmont Rodríguez", "A01654861", "Student"),
+            ("David Arturo Villanueva San Juan", "A01337636", "Student"),
+            ("Óscar Vargas Pérez", "A01657110", "Student"),
+            ("Raul", "A12347572", "Proffessor");
 
 INSERT INTO product ( Name, Description, Location, FinderID, Color, LookerID, Found, Category )
         VALUES
