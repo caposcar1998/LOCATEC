@@ -1,31 +1,180 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import React, { useState } from 'react'
 import './App.css'
+import { useNavigate } from 'react-router-dom';
+import { Button, 
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  InputGroup,
+  Input,
+  Card,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardText
+} from 'reactstrap'
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [collapsed, setCollapsed] = useState(true);
+
+  const toggleNavbar = () => setCollapsed(!collapsed);
+
+  const navigate = useNavigate;
+
 
   return (
     <div className="App">
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+      <Navbar>
+          <NavbarBrand href="/" className='me-2'>
+            <img 
+              alt="logoi"
+              src="/logotec.png"
+              className='logoi'
+              style={{
+                height: 40,
+                width: 40,
+              }}
+            />
+            LOCATEC
+          </NavbarBrand>
+          <NavbarToggler onClick={toggleNavbar} className="me-2" />
+        <Collapse isOpen={!collapsed} navbar>
+          <Nav navbar>
+            <NavItem>
+              <NavLink href="/components/">LogIn</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://youtube.com">
+                Catalogo
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+        </Navbar>
+      </div>
+      <div>
+        <a>
+          <img src="/campus.jpg" className="logoprueba" alt="Vite logo" style={{
+                height: 580,
+                width: 1020,
+              }} />
         </a>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div>
+        <a href="https://tec.mx/es" target="_blank">
+          <img src="/logoborrego.png" className="logo react" alt="React logo" />
+        </a>
       </div>
+      <h1>¿Qué artículo estás buscando?</h1>
+      <div className='busqueda'>
+      <img src="/teus.png" className="logo" alt="teus logo" />
+      <InputGroup className='barra'>
+        <Input placeholder='El artículo que busco es...'/>
+        <Button color="primary">
+          Buscar
+        </Button>
+      </InputGroup>
+      </div>
+      <br />
+      <div>
+      <Button outline color="info" href="/Catalogo"> Ir al catálogo </Button>
+      </div>
+      <br />
+
+      <div className="cardi">
+        <Card
+          style={{
+            width: '18rem'
+          }}
+        >
+          <img
+            alt="Sample"
+            src="/raquetas.png"
+          />
+          <CardBody>
+            <CardTitle tag="h5">
+              Card title
+            </CardTitle>
+            <CardSubtitle
+              className="mb-2 text-muted"
+              tag="h6"
+            >
+              Card subtitle
+            </CardSubtitle>
+            <CardText>
+              Some quick example text to build on the card title and make up the bulk of the card‘s content.
+            </CardText>
+            <Button outline color="info">
+              Button
+            </Button>
+          </CardBody>
+        </Card>
+        <Card
+          style={{
+            width: '18rem'
+          }}
+        >
+          <img
+            alt="Sample"
+            src="/iphone.png"
+          />
+          <CardBody>
+            <CardTitle tag="h5">
+              Card title
+            </CardTitle>
+            <CardSubtitle
+              className="mb-2 text-muted"
+              tag="h6"
+            >
+              Card subtitle
+            </CardSubtitle>
+            <CardText>
+              Some quick example text to build on the card title and make up the bulk of the card‘s content.
+            </CardText>
+            <Button outline color="info">
+              Button
+            </Button>
+          </CardBody>
+        </Card>
+        <Card
+          style={{
+            width: '18rem'
+          }}
+        >
+          <img
+            alt="Sample"
+            src="/airpods.png"
+          />
+          <CardBody>
+            <CardTitle tag="h5">
+              Card title
+            </CardTitle>
+            <CardSubtitle
+              className="mb-2 text-muted"
+              tag="h6"
+            >
+              Card subtitle
+            </CardSubtitle>
+            <CardText>
+              Some quick example text to build on the card title and make up the bulk of the card‘s content.
+            </CardText>
+            <Button outline color="info">
+              Button
+            </Button>
+          </CardBody>
+        </Card>
+      </div>
+      <br/>
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        Calle del Puente 222, Col. Ejidos de Huipulco, Tlalpan, Ciudad de México, C.P. 14380 D.R.© INSTITUTO TECNOLÓGICO Y DE ESTUDIOS SUPERIORES DE MONTERREY, MÉXICO. 2022
       </p>
     </div>
   )
