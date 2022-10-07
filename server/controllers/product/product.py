@@ -24,8 +24,8 @@ class Product(ProductInterface):
         self.database = database
 
     def create(self, product: ProductModel)->str:
-        create_product_cateogry_metric.labels(tipoProducto=product["Category"]).inc()
-        create_product_location_metric.labels(localizacion=product["Location"]).inc()
+        create_product_cateogry_metric.labels(tipoProducto=product["category"]).inc()
+        create_product_location_metric.labels(localizacion=product["location"]).inc()
         return self.database.create_product(product)
 
     def delete(self, id: str)->str:

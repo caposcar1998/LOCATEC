@@ -12,12 +12,12 @@ class Locatec_users(LocatecUsersInterface):
         self.database = database
 
     def create(self, user)->str:
-        create_user_cateogry_metric.labels(crear_rol_usuario=user["Rol"]).inc()
+        create_user_cateogry_metric.labels(rolUsuario=user["rol"]).inc()
         return self.database.create_user(user)
 
     def delete(self, id: str)->str:
         res = self.readOne(id)
-        delete_user_cateogry_metric.labels(crear_rol_usuario=res["Rol"]).inc()
+        delete_user_cateogry_metric.labels(rolUsuario=res["Rol"]).inc()
         return self.database.delete_user(id)
 
     def update(self, user, id: str)->str:
