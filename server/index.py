@@ -23,9 +23,6 @@ user_http = user_http.UsersHTTP(user_controller)
 product_http = product_http.ProductHTTP(product_controller)
 
 
-
-
-@metrics.counter("testing","esta es mi prueba")
 @app.route('/product/<id>',methods = ['PUT', 'DELETE', 'GET'])
 def product_id(id):
     if request.method == 'PUT':
