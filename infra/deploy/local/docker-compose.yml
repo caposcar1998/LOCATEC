@@ -12,33 +12,38 @@ services:
     networks:
       - locatec
 
-  
+  database:
+      image: mysql
+      container_name: database
+      restart: always
+      ports:
+        - '3306:3306'
+      #command: --init-file /init.sql
+      volumes:
+        - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+        - ~/apps/mysql:/var/lib/locatec2
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_USER: test
+        MYSQL_PASSWORD: test
+        MYSQL_ROOT_HOST: '%'
+        TIMEZONE: UTC
+
+      networks:
+        - locatec
+
   server:
     build: 
       context: ../../../
       dockerfile: infra/deploy/backend/dev/Dockerfile
+    restart: always
     ports:
       - "5000:5000"
     container_name: server
     networks:
       - locatec
-
-
-
-  database:
-    image: mariadb:10.7
-    container_name: database
-    ports:
-      - 3306:3306
-    volumes:
-      - ~/apps/mariadb:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_PASSWORD=root
-      - MYSQL_USER=user
-    networks:
-      - locatec
-
+    depends_on:
+      - database
   prometheus:
       image: prom/prometheus:latest
       restart: unless-stopped

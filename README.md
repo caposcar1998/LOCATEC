@@ -51,7 +51,7 @@ Password: pass@123
 url: http://prometheus:9090
 ```
 
-## Run prod 
+## Run prod
 
 1. On EC2
 
@@ -64,6 +64,181 @@ sudo su
 sudo curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 ```
 
+## API
+
+
+### GET /product
+
+Get all products on locatec
+
+**Parameters**
+
+
+**Response**
+
+```bash
+
+// Objects found
+{
+    "code": 200,
+    "result: []
+}
+
+or
+
+// Error
+{
+    "code": 500,
+    "result: error
+}
+
+```
+
+### POST /product
+
+Create product on locatec
+
+**Parameters**
+
+body params: 
+
+```bash
+{
+    {"name": str , "description": str, "location": str, "finder": int, "color": str, "looker": int, "category": str}
+}
+```
+
+**Response**
+
+```bash
+
+// Object created
+{
+    "code": 201,
+    "result: ok
+}
+
+or
+
+// Error
+{
+    "code": 500,
+    "result: error
+}
+
+```
+
+### DELETE /product/{id}
+
+Delete one product on locatec
+
+**Parameters**
+
+
+**Response**
+
+```bash
+// Object deleted
+{
+    "code": 200,
+    "result: "deleted"
+}
+
+or
+
+// Error
+{
+    "code": 500,
+    "result: error
+}
+
+```
+
+### PUT /product/{id}
+
+Update product on locatec
+
+**Parameters**
+
+body params:
+
+```bash
+{
+    {"name": str , "description": str, "location": str, "finder": int, "color": str, "looker": int}
+}
+```
+
+**Response**
+
+```bash
+
+// Object updated
+{
+    "code": 200,
+    "result: ok
+}
+
+or
+
+// Error
+{
+    "code": 500,
+    "result: error
+}
+
+```
+
+### GET /product/{id}
+
+Returns one product
+
+**Parameters**
+
+
+**Response**
+
+```
+// Object obtained
+{
+    "code": 200,
+    "result: product
+}
+
+or
+
+// Error
+{
+    "code": 500,
+    "result: error
+}
+
+```
+
+### PUT /product/{id}/status/{status}/looker/{1}
+
+Changes status product found
+
+**Parameters**
+
+
+**Response**
+
+```
+// Object obtained
+{
+    "code": 200,
+    "result: ok
+}
+
+or
+
+// Error
+{
+    "code": 500,
+    "result: error
+}
+
+```
 
 # References
 
