@@ -14,6 +14,7 @@ import ReclameProduct from "./ReclameProduct";
 import {useAuth0} from "@auth0/auth0-react";
 import LoginButton from "./components/LoginButton.jsx";
 import LogoutButton from "./components/LogoutButton.jsx";
+import Header from "./components/Header";
 export const Home = () =>{
 
     const { user, isAuthenticated, isLoading } = useAuth0();
@@ -30,10 +31,9 @@ export const Home = () =>{
     else {
         return (
             <div className="App">
+                <Header />
                 <LogoutButton/>
-                THIS IS CP
-                <CreateProduct></CreateProduct>
-                THIS IS CP
+                
                 <div>
                 </div>
                 <div>

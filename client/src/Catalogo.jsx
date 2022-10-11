@@ -12,12 +12,13 @@ import { Button,
   import axios from 'axios';
   import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 import ProductCard from "./components/ProductCard";
+import Header from "./components/Header";
  
 
 const Catalogo = () =>{
     return(
        <div className="App">
-        <ProductCard product_id={1}></ProductCard>
+        <Header />
         <div>
         </div>
         <div>
@@ -48,27 +49,8 @@ const Catalogo = () =>{
             }}
           >
             
-            <img
-              alt="Sample"
-              src="/raquetas.png"
-            />
-            <CardBody>
-              <CardTitle tag="h5">
-                Card title
-              </CardTitle>
-              <CardSubtitle
-                className="mb-2 text-muted"
-                tag="h6"
-              >
-                Card subtitle
-              </CardSubtitle>
-              <CardText>
-                Some quick example text to build on the card title and make up the bulk of the card‘s content.
-              </CardText>
-              <Button outline color="info">
-                Button
-              </Button>
-            </CardBody>
+            <ProductCard product_id={1}></ProductCard>
+
           </Card>
           <Card
             style={{

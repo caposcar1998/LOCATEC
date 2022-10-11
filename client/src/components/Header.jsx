@@ -40,6 +40,9 @@ const Header = () => {
           <NavItem>
             <Link to="/catalogo">Catalogo</Link>
           </NavItem>
+          <NavItem>
+            <NavLink href="/CreateProduct">Encontre artículo</NavLink>
+          </NavItem>
         </Nav>
       </Collapse>
       </Navbar>

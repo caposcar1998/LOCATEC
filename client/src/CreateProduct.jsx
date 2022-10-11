@@ -11,13 +11,14 @@ import { Button,
   import './App.css'
   import axios from 'axios';
   import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
+  import Header from "./components/Header";
  
 
 const CreateProduct = () =>{
     return(
        <div className="App">
+        <Header />
         <div>
-
 
         <fieldset>
       <h2 class="fs-title">Encontre un artículo</h2>
