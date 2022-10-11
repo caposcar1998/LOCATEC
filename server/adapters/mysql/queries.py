@@ -40,7 +40,8 @@ class Queries:
             'CreatedAt': res[6],
             'Looker': res[7],
             'Found': res[8],
-            'Category': res[9]
+            'Category': res[9],
+            'Picture': res[10]
         })
 
         return products_found

@@ -21,7 +21,7 @@ services:
       #command: --init-file /init.sql
       volumes:
         - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-        - ~/apps/mysql:/var/lib/locatec2
+        - ~/apps/mysql:/var/lib/locatec5
       environment:
         MYSQL_ROOT_PASSWORD: root
         MYSQL_USER: test

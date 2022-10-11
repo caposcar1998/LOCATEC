@@ -80,33 +80,33 @@ export const Home = () =>{
 
                 <div className="cardi">
                 {productFound.map(function(object, i){
-                    return <Card
-                    style={{
-                        width: '18rem'
-                    }}
-                >
-                    <img
-                        alt="Sample"
-                        src="/raquetas.png"
-                    />
-                    <CardBody>
-                        <CardTitle tag="h5">
-                            {object["Name"]}
-                        </CardTitle>
-                        <CardSubtitle
-                            className="mb-2 text-muted"
-                            tag="h6"
-                        >
-                            Lugar: {object["Location"]}
-                        </CardSubtitle>
-                        <CardText>
-                            {object["Description"]}
-                        </CardText>
-                        <Button outline color="info">
-                            Abrir
-                        </Button>
-                    </CardBody>
-                </Card>
+                        return <Card
+                        style={{
+                            width: '18rem'
+                        }}
+                    >
+                        <img
+                            alt="Sample"
+                            src={object["Picture"]}
+                        />
+                        <CardBody>
+                            <CardTitle tag="h5">
+                                {object["Name"]}
+                            </CardTitle>
+                            <CardSubtitle
+                                className="mb-2 text-muted"
+                                tag="h6"
+                            >
+                                Lugar: {object["Location"]}
+                            </CardSubtitle>
+                            <CardText>
+                                {object["Description"]}
+                            </CardText>
+                            <Button outline color="info">
+                                Ir
+                            </Button>
+                        </CardBody>
+                    </Card>
                 })}
 
                 </div>
