@@ -9,6 +9,9 @@ import { Button,
     CardText
   } from 'reactstrap'
   import './App.css'
+  import axios from 'axios';
+  import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
+ 
 
 const Catalogo = () =>{
     return(
@@ -42,6 +45,7 @@ const Catalogo = () =>{
               width: '18rem'
             }}
           >
+            
             <img
               alt="Sample"
               src="/raquetas.png"

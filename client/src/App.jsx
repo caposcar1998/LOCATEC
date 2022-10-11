@@ -18,6 +18,7 @@ function App() {
         <Routes>
             <Route exact path="/" element={<Home />}/>
             <Route exact path="catalogo" element={<Catalogo />} />
+            <Route exact path="catalogo" element={<Catalogo />} />
             <Route path="*" element={<NoPage />} />
         </Routes>
     </>

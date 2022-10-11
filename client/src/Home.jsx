@@ -9,11 +9,17 @@ import { Button,
   CardText
 } from 'reactstrap'
 import './App.css'
+import CreateProduct from "./CreateProduct";
+import ReclameProduct from "./ReclameProduct";
 export const Home = () =>{
 
 
     return(
+      
         <div className="App">
+          THIS IS CP
+          <CreateProduct></CreateProduct>
+          THIS IS CP
         <div>
         </div>
         <div>
