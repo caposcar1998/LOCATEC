@@ -11,11 +11,13 @@ import { Button,
   import './App.css'
   import axios from 'axios';
   import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
+import ProductCard from "./components/ProductCard";
  
 
 const Catalogo = () =>{
     return(
        <div className="App">
+        <ProductCard product_id={1}></ProductCard>
         <div>
         </div>
         <div>
