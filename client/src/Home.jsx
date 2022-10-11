@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, 
   InputGroup,
   Input,
@@ -15,7 +15,20 @@ import {useAuth0} from "@auth0/auth0-react";
 import LoginButton from "./components/LoginButton.jsx";
 import LogoutButton from "./components/LogoutButton.jsx";
 import Header from "./components/Header";
+import axios from "axios";
+
 export const Home = () =>{
+
+    const [productFound, setProductFound] = useState([])
+
+    useEffect(() => {
+        axios
+        .get("http://localhost:5000/product")
+        .then(function (response) {
+            console.log(response)
+          setProductFound(response["data"]["result"])
+        });
+      }, []);
 
     const { user, isAuthenticated, isLoading } = useAuth0();
 
@@ -66,90 +79,36 @@ export const Home = () =>{
                 <br/>
 
                 <div className="cardi">
-                    <Card
-                        style={{
-                            width: '18rem'
-                        }}
-                    >
-                        <img
-                            alt="Sample"
-                            src="/raquetas.png"
-                        />
-                        <CardBody>
-                            <CardTitle tag="h5">
-                                Card title
-                            </CardTitle>
-                            <CardSubtitle
-                                className="mb-2 text-muted"
-                                tag="h6"
-                            >
-                                Card subtitle
-                            </CardSubtitle>
-                            <CardText>
-                                Some quick example text to build on the card title and make up the bulk of the card‘s
-                                content.
-                            </CardText>
-                            <Button outline color="info">
-                                Button
-                            </Button>
-                        </CardBody>
-                    </Card>
-                    <Card
-                        style={{
-                            width: '18rem'
-                        }}
-                    >
-                        <img
-                            alt="Sample"
-                            src="/iphone.png"
-                        />
-                        <CardBody>
-                            <CardTitle tag="h5">
-                                Card title
-                            </CardTitle>
-                            <CardSubtitle
-                                className="mb-2 text-muted"
-                                tag="h6"
-                            >
-                                Card subtitle
-                            </CardSubtitle>
-                            <CardText>
-                                Some quick example text to build on the card title and make up the bulk of the card‘s
-                                content.
-                            </CardText>
-                            <Button outline color="info">
-                                Button
-                            </Button>
-                        </CardBody>
-                    </Card>
-                    <Card
-                        style={{
-                            width: '18rem'
-                        }}
-                    >
-                        <img
-                            alt="Sample"
-                            src="/airpods.png"
-                        />
-                        <CardBody>
-                            <CardTitle tag="h5">
-                                Card title
-                            </CardTitle>
-                            <CardSubtitle
-                                className="mb-2 text-muted"
-                                tag="h6"
-                            >
-                                Card subtitle
-                            </CardSubtitle>
-                            <CardText>
-                                Some quick example text to build on the card title and make up the bulk of the card‘s
-                                content.
-                            </CardText>
-                            <Button outline color="info">
-                                Button
-                            </Button>
-                        </CardBody>
-                    </Card>
+                {productFound.map(function(object, i){
+                    return <Card
+                    style={{
+                        width: '18rem'
+                    }}
+                >
+                    <img
+                        alt="Sample"
+                        src="/raquetas.png"
+                    />
+                    <CardBody>
+                        <CardTitle tag="h5">
+                            {object["Name"]}
+                        </CardTitle>
+                        <CardSubtitle
+                            className="mb-2 text-muted"
+                            tag="h6"
+                        >
+                            Lugar: {object["Location"]}
+                        </CardSubtitle>
+                        <CardText>
+                            {object["Description"]}
+                        </CardText>
+                        <Button outline color="info">
+                            Abrir
+                        </Button>
+                    </CardBody>
+                </Card>
+                })}
+
                 </div>
                 <br/>
                 <p className="read-the-docs">
