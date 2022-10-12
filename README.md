@@ -61,8 +61,10 @@ sudo yum install firewalld -y
 firewall-cmd --add-service=http --permanent
 firewall-cmd --reload
 sudo yum install docker -y
+sudo um install git -y
 sudo service docker start
 git clone https://github.com/caposcar1998/LOCATEC.git
+git checkout staging
 sudo su
 sudo curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 ```
