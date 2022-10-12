@@ -57,6 +57,9 @@ url: http://prometheus:9090
 
 ```bash
 sudo yum update -y
+sudo yum install firewalld -y 
+firewall-cmd --add-service=http --permanent
+firewall-cmd --reload
 sudo yum install docker -y
 sudo service docker start
 git clone https://github.com/caposcar1998/LOCATEC.git
