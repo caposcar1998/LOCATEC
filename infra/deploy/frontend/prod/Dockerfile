@@ -19,8 +19,6 @@ RUN npm run build
 
 # nginx state for serving content
 FROM nginx:alpine
-
-COPY ./infra/deploy/frontend/prod/default.conf /etc/nginx/conf.d/default.conf
 # Set working directory to nginx asset directory
 WORKDIR /usr/share/nginx/html
 # Remove default nginx static assets
