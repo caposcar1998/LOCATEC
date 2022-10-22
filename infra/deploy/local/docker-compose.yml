@@ -5,7 +5,7 @@ services:
   client:
     build:
       context: ../../../
-      dockerfile: infra/deploy/frontend/prod/Dockerfile
+      dockerfile: infra/deploy/frontend/dev/Dockerfile
     ports:
        - "8080:8080"
        - "80:80"
