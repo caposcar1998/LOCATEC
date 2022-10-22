@@ -84,7 +84,7 @@ services:
     restart: always
     build:
       dockerfile: Dockerfile
-      context: ./infra/deploy/nginx
+      context: ../nginx
     ports:
       - "3050:80"
 
