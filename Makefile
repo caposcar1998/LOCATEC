@@ -20,3 +20,5 @@ run: # Run the application in a container
 	$(COMPOSE) -f $(COMPOSE_FILE) up -d prometheus
 	$(COMPOSE) -f $(COMPOSE_FILE) build grafana
 	$(COMPOSE) -f $(COMPOSE_FILE) up -d grafana
+	$(COMPOSE) -f $(COMPOSE_FILE) build nginx
+	$(COMPOSE) -f $(COMPOSE_FILE) up -d nginx

@@ -74,5 +74,19 @@ services:
       networks:
         - locatec
 
+  nginx:
+    depends_on:
+      - grafana
+      - prometheus
+      - server
+      - database
+      - client
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./infra/deploy/nginx
+    ports:
+      - "3050:80"
+
 networks:
   locatec:
