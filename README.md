@@ -61,7 +61,7 @@ sudo yum install firewalld -y
 firewall-cmd --add-service=http --permanent
 firewall-cmd --reload
 sudo yum install docker -y
-sudo um install git -y
+sudo yum install git -y
 sudo service docker start
 git clone https://github.com/caposcar1998/LOCATEC.git
 git checkout staging
