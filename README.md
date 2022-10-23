@@ -72,6 +72,9 @@ sudo chmod +x /usr/bin/docker-compose
 
 ```
 
+2. ON AWS console add to security group the TCP through all intervals and all IP's
+
+
 ## API
 
 
