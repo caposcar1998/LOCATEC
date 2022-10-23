@@ -18,7 +18,7 @@ COPY ./client ./
 RUN npm run build
 
 # nginx state for serving content
-FROM nginx:alpine
+FROM nginx
 
 COPY ./infra/deploy/frontend/prod/default.conf /etc/nginx/conf.d/default.conf
 

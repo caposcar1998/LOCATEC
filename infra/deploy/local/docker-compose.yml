@@ -6,9 +6,8 @@ services:
     build:
       context: ../../../
       dockerfile: infra/deploy/frontend/dev/Dockerfile
-    expose:
+    ports:
        - "8080:8080"
-       - "80:80"
     container_name: client
     networks:
       - locatec
@@ -17,7 +16,7 @@ services:
       image: mysql
       container_name: database
       restart: always
-      expose:
+      ports:
         - '3306:3306'
       #command: --init-file /init.sql
       volumes:
@@ -38,7 +37,7 @@ services:
       context: ../../../
       dockerfile: infra/deploy/backend/dev/Dockerfile
     restart: always
-    expose:
+    ports:
       - "5000:5000"
     container_name: server
     networks:
@@ -49,8 +48,8 @@ services:
       image: prom/prometheus:latest
       restart: unless-stopped
       container_name: prometheus
-      expose:
-        - 9090:9090
+      ports:
+        - "9090:9090"
       volumes:
         - ../monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
       command:
@@ -65,8 +64,8 @@ services:
       container_name: grafana
       depends_on:
         - prometheus
-      expose:
-        - 3000:3000
+      ports:
+        - "3000:3000"
       volumes:
         - ./monitoring/datasource.yml:/etc/grafana/provisioning/datasource.yml
       env_file:
@@ -87,10 +86,8 @@ services:
       context: ../nginx
     ports:
       - "3050:80"
-      - "3000:3000"
-      - "8080:8080"
-      - "80:80"
-      - "5000:5000"
+    networks:
+      - locatec
 
 
 networks:
