@@ -85,8 +85,8 @@ services:
       dockerfile: Dockerfile
       context: ../nginx
     expose:
-      - "80:80"
-      - "3000:3000"
+      - 80
+      - 3000
     networks:
       - locatec
 
