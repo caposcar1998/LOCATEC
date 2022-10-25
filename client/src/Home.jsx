@@ -11,6 +11,7 @@ import { Button,
 import './App.css'
 import CreateProduct from "./CreateProduct";
 import ReclameProduct from "./ReclameProduct";
+import CreateUser from "./CreateUser";
 import {useAuth0} from "@auth0/auth0-react";
 import LoginButton from "./components/LoginButton.jsx";
 import LogoutButton from "./components/LogoutButton.jsx";
