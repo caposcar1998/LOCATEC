@@ -29,6 +29,16 @@
   padding-top: 30px;
 }
 
+.formulario{
+  text-align: center;
+}
+
+.fo{
+  max-width: 500px;
+  margin: auto;
+}
+
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
