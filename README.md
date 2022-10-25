@@ -69,11 +69,20 @@ sudo su
 sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)"  -o /usr/local/bin/docker-compose
 sudo mv /usr/local/bin/docker-compose /usr/bin/docker-compose
 sudo chmod +x /usr/bin/docker-compose
+cd LOCATEC/
+make run
 
 ```
 
 2. ON AWS console add to security group the TCP through all intervals and all IP's
 
+### Start Docker afresh
+
+```
+sudo docker rm -vf $(sudo docker ps -aq)
+sudo docker rmi -f $(sudo docker images -aq)
+make run
+```
 
 ## API
 
