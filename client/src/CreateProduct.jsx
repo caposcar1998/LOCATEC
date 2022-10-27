@@ -11,7 +11,7 @@ import { Button,
   } from 'reactstrap'
   import './App.css'
   import axios from 'axios';
-  import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
+  import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap'; 
   import Header from "./components/Header";
 
 
