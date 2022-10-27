@@ -47,7 +47,7 @@ import { Button,
     //   name= str, description= str, location= str, finder= Int, color= str, looker= null, Category= str
     // ])
 
-const CreateProduct = () =>{
+
     return(
        <div className="App">
         <Header />
@@ -123,7 +123,7 @@ const CreateProduct = () =>{
       </div>
     )
 }
-  }
+  
 
 export default CreateProduct;
   
