@@ -1,4 +1,5 @@
-import React from "react";
+// import React from 'react';
+import React, { useState } from 'react';
 import { Button, 
     InputGroup,
     Input,
@@ -13,58 +14,83 @@ import { Button,
   } from 'reactstrap'
   import './App.css'
   import axios from 'axios';
-  import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
+  import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap'; 
   import Header from "./components/Header";
- 
 
-const CreateProduct = () =>{
+
+  export const CreateProduct = () =>{
+
+    const [name, setName] = useState()
+    const [description, setDescription] = useState()
+    const [location, setLocation] = useState()
+    const [finder, setFinder] = useState()
+    const [color, setColor] = useState()
+    const [looker, setLooker] = useState()
+    const [category, setCategory] = useState()
+
+   function productFuncion(){
+      axios.post('http://localhost:5000/product'), {
+      name: name,
+      description: description,
+      location: location,
+      finder: finder,
+      color: color,
+      looker: null,
+      category: category
+  }
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+
+    // const [createProduct, setCreateProduct] = useState([
+    //   name= str, description= str, location= str, finder= Int, color= str, looker= null, Category= str
+    // ])
+
+
     return(
        <div className="App">
         <Header />
         <div>
-      <div>
-        <h1>Encontre un artículo</h1>
-        <br></br>
-        <h4 class="fs-subtitle">Ingresa los datos del artículo encontrado</h4>
-        <br></br>
-        <Form class="fo">
-        <FormGroup class="formulario">
-        <Label for="name">Nombre: </Label>
-        <Input type="text" id="name"name="name" placeholder="Nombre del artículo" />
-        </FormGroup>
-        <FormGroup class="formulario">
-        <Label for="description">Descripcion: </Label>
-        <Input type="text" id="description"name="description" placeholder="Descripción" />
-        </FormGroup>
-        <FormGroup class="formulario">
-        <Label for="location">Lugar donde se encontro: </Label> 
-        <Input type="text" id="location"name="location" placeholder="Ubicación" />
-        </FormGroup>
-        <FormGroup class="formulario">
-        <Label for="color">Color del articulo encontrado: </Label> 
-        <Input type="text" id="color"name="color" placeholder="Color" />
-        </FormGroup>
-        <FormGroup class="formulario">
-        <Label for="category">Categoria: </Label> 
-        <Input type="text" id="category"name="category" placeholder="Categoria" />
-        </FormGroup>
-        <FormGroup class="formulario">
-        <Label for="finder">Encontrado por: </Label> 
-        <Input type="text" id="finder"name="finder" placeholder="Encontrado por" />
-        </FormGroup>
-        <FormGroup class="formulario">
-        <Label for="rol">Rol:</Label>
-          <Input type="select" name="rol" id="rol">
-          <option value="estudiante">Estudiante</option>
-          <option value="docente">Docente</option>
-          <option value="admin">Administrador</option>
-          </Input>
-        </FormGroup>
-        <br></br>
-        <Button outline color="success" href="/" type="submit" name="next" class="back back-button" value="Regresar">Subir Articulo</Button>
-      </Form>
-      </div>
-      
+
+        <fieldset>
+      <h2 class="fs-title">Encontre un artículo</h2>
+      <br></br>
+      <h4 class="fs-subtitle">Ingresa los datos del artículo encontrado</h4>
+      <br></br>
+      <input type="text" id="name"name="name" placeholder="Nombre del artículo" OnChange={()=> setName(event.target.value)}/>
+      <br></br>
+      <br></br>
+      <input type="text" id="description"name="description" placeholder="Descripción" OnChange={()=> setDescription(event.target.value)}/>
+      <br></br>
+      <br></br>
+      <input type="text" id="location"name="location" placeholder="Ubicación" OnChange={()=> setLocation(event.target.value)}/>
+      <br></br>
+      <br></br>
+      <input type="text" id="color"name="color" placeholder="Color" OnChange={()=> setColor(event.target.value)}/>
+      <br></br>
+      <br></br>
+      <input type="text" id="category"name="category" placeholder="Categoria" OnChange={()=> setCategory(event.target.value)}/>
+      <br></br>
+      <br></br>
+      <input type="text" id="finder"name="finder" placeholder="Encontrado por" OnChange={()=> setFinder(event.target.value)}/>
+      <br></br>
+      <br></br>
+      <label for="rol">Rol</label>
+      <br></br>
+        <select name="rol" id="rol">
+        <option value="estudiante">Estudiante</option>
+        <option value="docente">Docente</option>
+        <option value="admin">Administrador</option>
+        </select>
+      <br></br>
+      <br></br>
+      <a href="/"><input type="button" name="next" class="back back-button" value="Regresar" /></a>
+      <a href="/"><input type="button" name="next" class="next next-button" value="Siguiente" onClick ={productFuncion}/></a>
+</fieldset>
 
         </div>
         <div>
@@ -100,5 +126,7 @@ const CreateProduct = () =>{
       </div>
     )
 }
+  
 
 export default CreateProduct;
+  
