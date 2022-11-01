@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CardD from "./Card";
 import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
+import Container from 'react-bootstrap/Container';
 
 function Catalogo(){
 
@@ -27,15 +28,15 @@ function Catalogo(){
 
 
     return(
-        <>
-        {products.map((item, index) => (
-        <CardD
-        name={item["Name"]}
-        description={item["Description"]}
-        pic={item["Picture"]}
-        />
-    ))}
-        </>
+        <Container>
+            {products.map((item, index) => (
+            <CardD
+            name={item["Name"]}
+            description={item["Description"]}
+            pic={item["Picture"]}
+            />
+            ))}
+        </Container>
     )
 }
 

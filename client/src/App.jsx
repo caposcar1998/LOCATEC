@@ -7,6 +7,7 @@ import NoAuth from './components/NoAuth';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import Catalogo from './components/Catalogo';
+import Usuario from './components/Usuario';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         {isAuthenticated ? 
           <>
             <Route exact path ="/catalogo" element={<Catalogo/>}/>
+            <Route exact path ="/usuario" element={<Usuario/>}/>
             <Route exact path='*' element={<NoPage/>}/> 
           </>
         :
