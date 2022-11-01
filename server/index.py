@@ -7,7 +7,7 @@ from controllers.product import product
 from controllers.locatec_users import locatec_users
 from http_requests import product_http
 from http_requests import user_http
-from flask-cors import CORS
+from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)

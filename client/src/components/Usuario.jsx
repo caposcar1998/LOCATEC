@@ -3,9 +3,9 @@ import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
-import Alert from 'react-bootstrap/Alert';
 import ModalO from "./ModalO";
 import AlertO from "./AlertO";
+import ModalCreate from "./ModalCreate";
 
 function Usuario(){
 
@@ -15,6 +15,7 @@ function Usuario(){
     const [showAlert, setShowAlert] = useState(false);
     const [messageError, setMessageError] = useState('')
     const [variante, setVariante]= useState("primary")
+    const [showCreate, setShowCreate] = useState(false)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -57,18 +58,6 @@ function Usuario(){
         })
     }
 
-    function createUser(){
-        axios.post(`http://localhost:5000/user`)
-        .then(response => {
-            console.log(response)
-        })
-        .catch(e => {
-            console.log(e)
-            return (<Alert key={"danger"} variant={"danger"}>
-            {e}
-          </Alert>)
-        })   
-    }
 
     useEffect(() => {
         retrieveUsers()
@@ -90,6 +79,10 @@ function Usuario(){
             description={"Estas seguro que deseas eliminar este usuario?"}
             titleAction={"Si"}
             />
+            <ModalCreate
+            show={showCreate}
+            setShow={setShowCreate}
+            />
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -99,7 +92,7 @@ function Usuario(){
                     <th>Matricula</th>
                     <th>
                         Accion
-                        <Button variant="primary">Crear Nuevo</Button>
+                        <Button variant="primary" onClick={()=> setShowCreate(true)}>Crear Nuevo</Button>
                         </th>
                     </tr>
                 </thead>
