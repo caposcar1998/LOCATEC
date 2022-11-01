@@ -1,32 +1,30 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import NoPage  from '../src/components/NoPage'
-import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
+import { useAuth0 } from '@auth0/auth0-react';
+import NoAuth from './components/NoAuth';
+import NavBar from './components/NavBar';
 
 function App() {
 
 
-  const { isLoading, isAuthenticated, error, user, loginWithRedirect, logout } =
-  useAuth0();
+  const { isAuthenticated } = useAuth0();
 
   return (
-    <Routes>
-      <Route exact path="/" element={
-        isAuthenticated ?
-        <button onClick={() => logout({ returnTo: window.location.origin })}></button>
-        :
-        <button onClick={loginWithRedirect}>Log in</button>
-      }/>
-      {user ? 
-        <>
-              <Route exact path='*' element={<NoPage/>}/> 
-            </> 
-      :
-          <Route exact path='/algo' element={<NoPage/>}/>
-      }
 
-    </Routes>
+    <>
+      <NavBar/>
+      <Routes>
+        <Route exact path="/" element={<h1>Hola</h1>}/>
+        {isAuthenticated ? 
+            <Route exact path='*' element={<NoPage/>}/> 
+        :
+            <Route exact path='/*' element={<NoAuth/>}/>
+        }
+
+      </Routes>
+    </>
   )
 }
 
