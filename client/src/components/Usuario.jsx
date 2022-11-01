@@ -4,10 +4,23 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
 import Alert from 'react-bootstrap/Alert';
+import ModalO from "./ModalO";
+import AlertO from "./AlertO";
 
 function Usuario(){
 
     const [users, setUsers] = useState([])
+    const [userDelete, setUserDelete] = useState()
+    const [show, setShow] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    function selectUserDelete(idUser){
+        handleShow()
+        setUserDelete(idUser)
+    }
 
     function retrieveUsers(){
         axios.get("http://localhost:5000/user")
@@ -23,12 +36,50 @@ function Usuario(){
         })
     }
 
+    function deleteUsers(){
+        axios.delete(`http://localhost:5000/user/${userDelete}`)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(e => {
+            console.log(e)
+            setShowAlert(true)
+        })
+    }
+
+    function createUser(){
+        axios.post(`http://localhost:5000/user`)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(e => {
+            console.log(e)
+            return (<Alert key={"danger"} variant={"danger"}>
+            {e}
+          </Alert>)
+        })   
+    }
+
     useEffect(() => {
         retrieveUsers()
       }, []);
 
     return(
         <Container>
+            <AlertO
+            message={"Error"}
+            variant={"danger"}
+            showValue={showAlert}
+            setShowValue={setShowAlert}
+            />
+            <ModalO
+            show={show}
+            handleClose={handleClose}
+            action={deleteUsers}
+            title={"Eliminar usuario"}
+            description={"Estas seguro que deseas eliminar este usuario?"}
+            titleAction={"Si"}
+            />
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -50,8 +101,8 @@ function Usuario(){
                     <td>{item["Rol"]}</td>
                     <td>{item["Tuiton"]}</td>
                     <td>
-                        <Button variant="primary">Editar</Button>
-                        <Button variant="primary">Eliminar</Button>
+                        <Button variant="warning">Editar</Button>
+                        <Button variant="danger" onClick={() => selectUserDelete(item["ID"])}>Eliminar</Button>
                     </td>
                     </tr>
                 ))}
