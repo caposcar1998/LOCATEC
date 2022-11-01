@@ -13,6 +13,8 @@ function Usuario(){
     const [userDelete, setUserDelete] = useState()
     const [show, setShow] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
+    const [messageError, setMessageError] = useState('')
+    const [variante, setVariante]= useState("primary")
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -29,21 +31,29 @@ function Usuario(){
             console.log(response)
         })
         .catch(e => {
-            console.log(e)
-            return (<Alert key={"danger"} variant={"danger"}>
-            {e}
-          </Alert>)
+                setVariante("danger")
+                setMessageError("Error al obtener usuarios")
+                setShowAlert(true)
         })
     }
 
     function deleteUsers(){
         axios.delete(`http://localhost:5000/user/${userDelete}`)
         .then(response => {
-            console.log(response)
+            if (response["data"]["code"] == 500 ){
+                setVariante("danger")
+                setMessageError("Usuario ligado a un producto ya creado, borrar producto")
+                setShowAlert(true)
+            }else{
+                setVariante("success")
+                setMessageError("Operacion realizada con exito")
+                setShowAlert(true)                
+            }
         })
         .catch(e => {
-            console.log(e)
-            setShowAlert(true)
+                setVariante("danger")
+                setMessageError("Error al eliminar usuario")
+                setShowAlert(true)
         })
     }
 
@@ -67,8 +77,8 @@ function Usuario(){
     return(
         <Container>
             <AlertO
-            message={"Error"}
-            variant={"danger"}
+            message={messageError}
+            variant={variante}
             showValue={showAlert}
             setShowValue={setShowAlert}
             />
