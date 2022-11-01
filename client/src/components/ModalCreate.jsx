@@ -6,7 +6,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
 
-function ModalCreate({show, setShow}) {
+function ModalCreate({show, setShow, setVariante, setMessageError, setShowAlert   }) {
 
     const [nombre, setNombre] = useState("")
     const [rol, setRol] = useState("")
@@ -23,10 +23,18 @@ function ModalCreate({show, setShow}) {
         .then(response => {
             setShow(false)
             console.log(response)
+            setVariante("success")
+            setMessageError("Operacion realizada con exito")
+            setShowAlert(true)   
+            window.location.reload(false);
+            
         })
         .catch(e => {
             setShow(false)
             console.log(e)
+            setVariante("danger")
+            setMessageError("Error al crear el usuario")
+            setShowAlert(true)
         })   
     }
 

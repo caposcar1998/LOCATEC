@@ -82,6 +82,9 @@ function Usuario(){
             <ModalCreate
             show={showCreate}
             setShow={setShowCreate}
+            setVariante={setVariante}
+            setMessageError={setMessageError}
+            setShowAlert={setShowAlert} 
             />
             <Table striped bordered hover>
                 <thead>
