@@ -6,21 +6,23 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
 
-function ModalEdit({show, setShow, setVariante, setMessageError, setShowAlert, nombre, rol, matricula   }) {
+function ModalEdit({show, setShow, setVariante, setMessageError, setShowAlert, nombre, rol, matricula, id   }) {
 
     const [nombreO, setNombre] = useState()
     const [rolO, setRol] = useState()
     const [matriculaO, setMatricula] = useState()
+    const [idO, setIdO] = useState(0)
 
     useEffect(() => {
         setNombre(nombre)
         setRol(rol)
         setMatricula(matricula)
+        setIdO(id)
       }, []);
 
     function editUser(){
         console.log(nombre, rol, matricula)
-        axios.put(`http://localhost:5000/user`,
+        axios.put(`http://localhost:5000/user/${idO}`,
         {
             "name":nombreO,
             "tuiton":rolO,
@@ -39,7 +41,7 @@ function ModalEdit({show, setShow, setVariante, setMessageError, setShowAlert, n
             setShow(false)
             console.log(e)
             setVariante("danger")
-            setMessageError("Error al crear el usuario")
+            setMessageError("Error al editar el usuario")
             setShowAlert(true)
         })   
     }

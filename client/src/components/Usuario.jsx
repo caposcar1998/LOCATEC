@@ -21,6 +21,7 @@ function Usuario(){
     const [nombreEditar, setNombreEditar] = useState("")
     const [rolEditar, setRolEditar] = useState("")
     const [tuitonEdit, setTuitonEdit] = useState("")
+    const [idEdit, setIdEdit] = useState(0)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -68,6 +69,7 @@ function Usuario(){
         setNombreEditar(name)
         setRolEditar(rol)
         setTuitonEdit(tuiton)
+        setIdEdit(idUser)
     }
 
 
@@ -98,16 +100,19 @@ function Usuario(){
             setMessageError={setMessageError}
             setShowAlert={setShowAlert} 
             />
-            <ModalEdit
-            show={showEdit}
-            setShow={setShowEdit}
-            setVariante={setVariante}
-            setMessageError={setMessageError}
-            setShowAlert={setShowAlert} 
-            nombre={nombreEditar}
-            rol={rolEditar}
-            matricula={tuitonEdit}
-            />
+            {showEdit &&
+                        <ModalEdit
+                        show={showEdit}
+                        setShow={setShowEdit}
+                        setVariante={setVariante}
+                        setMessageError={setMessageError}
+                        setShowAlert={setShowAlert} 
+                        nombre={nombreEditar}
+                        rol={rolEditar}
+                        matricula={tuitonEdit}
+                        id={idEdit}
+                        />
+            }
             <Table striped bordered hover>
                 <thead>
                     <tr>
