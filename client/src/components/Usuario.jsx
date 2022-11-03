@@ -7,6 +7,7 @@ import ModalO from "./ModalO";
 import AlertO from "./AlertO";
 import ModalCreate from "./Usuarios/ModalCreate";
 import ModalEdit from "./Usuarios/ModalEdit";
+import Search from "./Usuarios/Search";
 
 function Usuario(){
 
@@ -113,6 +114,11 @@ function Usuario(){
                         id={idEdit}
                         />
             }
+            <Search
+            arraySearch={users}
+            changeArray={setUsers}  
+            reset={retrieveUsers}          
+            />
             <Table striped bordered hover>
                 <thead>
                     <tr>

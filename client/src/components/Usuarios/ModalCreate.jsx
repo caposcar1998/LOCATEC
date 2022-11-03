@@ -17,8 +17,8 @@ function ModalCreate({show, setShow, setVariante, setMessageError, setShowAlert 
         axios.post(`http://localhost:5000/user`,
         {
             "name":nombre,
-            "tuiton":rol,
-            "rol": matricula
+            "tuiton":matricula,
+            "rol": rol
         })
         .then(response => {
             setShow(false)
