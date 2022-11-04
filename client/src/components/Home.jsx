@@ -4,6 +4,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+{/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" /> */}
+
 
 function Home(){
 
@@ -15,14 +18,70 @@ function Home(){
 
     return(
         <Container>
-            <Col></Col>
+            <div class="header-buscador">
+            <br/>
+            <br/>
             <Col>
+            <Row className="justify-content-md-center">
+            <h1 class="tituloBlanco">Support Center & Knowledge base</h1>
+            <br/>
+            <h2 class="tituloBlanco">Find advice and answers from our support team fast or get in touch</h2>
+            </Row>
+            <br/>
              <Row className="justify-content-md-center">
              <Form.Control type="text" placeholder="Buscar" onChange={event => setMessage(event.target.value)} />
-             <Button variant="primary" onClick={handleChange}>Buscar</Button>
-                <h1>Buscas algo en particular?</h1>
+            </Row>
+            <br/>
+            <Row className="justify-content-md-center">
+            <Button  style={{ width: '25%' }} variant="primary" onClick={handleChange}>Buscar</Button>
             </Row>
             </Col>
+            <br/>
+            <br/>
+            </div>
+
+            <div>
+                <h1>Find your answer by subject</h1>
+                <br></br>
+                <div class="Cartas">
+                <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src="holder.js/100px180" />
+                    <Card.Body>
+                    <Card.Title>Installation</Card.Title>
+                    <Card.Text>
+                        Lorem ipsum dolor sit amet ipsum
+                        dolor sit amet ipsum solor sit amet.
+                    </Card.Text>
+                    <Button variant="primary">Ir</Button>
+                    </Card.Body>
+                </Card>
+
+                <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src="holder.js/100px180" />
+                    <Card.Body>
+                    <Card.Title>Billing & Pricing</Card.Title>
+                    <Card.Text>
+                        Lorem ipsum dolor sit amet ipsum
+                        dolor sit amet ipsum solor sit amet.
+                    </Card.Text>
+                    <Button variant="primary">Ir</Button>
+                    </Card.Body>
+                </Card>
+
+                <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src="holder.js/100px180" />
+                    <Card.Body>
+                    <Card.Title>Features</Card.Title>
+                    <Card.Text>
+                        Lorem ipsum dolor sit amet ipsum
+                        dolor sit amet ipsum solor sit amet.
+                    </Card.Text>
+                    <Button variant="primary">Ir</Button>
+                    </Card.Body>
+                </Card>
+                </div>
+
+            </div>
         </Container>
     )
 }
