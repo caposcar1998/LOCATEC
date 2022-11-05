@@ -1,8 +1,19 @@
 .header-buscador{
     background-color: #081CAD;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .tituloBlanco{
     color:#ffffff;
     text-align: center;
+}
+
+.presentacionCartas{
+    background-color: red;
+    
+}
+
+.prueba1{
+    background-color: green;
 }
