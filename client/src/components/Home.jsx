@@ -1,19 +1,15 @@
 import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Upload from './Helpers/Upload';
+import Search from './Helpers/Search';
+import CardD from './Card';
 
 function Home(){
 
     const [message, setMessage] = useState('');
-
-    const handleChange = () => {    
-        console.log('value is:', message);
-      };
+    const [productsFound, setProductsFound] = useState([])
 
     return(
         <div class="contenedor">
@@ -22,21 +18,9 @@ function Home(){
             <div class="header-buscador">
             <br/>
             <br/>
-            <Col>
-            <Row className="justify-content-md-center">
-            <h1 class="tituloBlanco">LOCATEC</h1>
-            <br/>
-            <h2 class="tituloBlanco">Busca y encuentra tus productos perdidos con nosotros</h2>
-            </Row>
-            <br/>
-             <Row className="justify-content-md-center">
-             <Form.Control style={{ width: '50%' }} type="text" placeholder="Buscar" onChange={event => setMessage(event.target.value)} />
-            </Row>
-            <br/>
-            <Row className="justify-content-md-center">
-            <Button style={{ width: '25%' }} variant="primary" onClick={handleChange}>Buscar</Button>
-            </Row>
-            </Col>
+            <Search
+            setProductsFound={setProductsFound}
+            />
             <br/>
             <br/>
             </div>
@@ -45,6 +29,25 @@ function Home(){
 
             <div class="prueba1">
                 <h1>Enciende el Cambio</h1>
+                <br></br>
+                <div class="cuadro">
+                    <h1>Búsqueda rápida</h1>
+                    {productsFound.length > 0 ?
+                    productsFound.map((item, index) => (
+                        <CardD
+                        name={item["Name"]}
+                        description={item["Description"]}
+                        pic={item["Picture"]}
+                        recover={null}
+                        idProduct={item["ID"]}
+                        />
+                        ))
+                    :
+                        <p>Busca algun producto en la parte de arriba</p>
+                }
+                </div>
+                <br></br>
+                <br></br>
                 <br></br>
                 <div class="presentacionCartas">
                     <div class="carta">
@@ -88,10 +91,6 @@ function Home(){
 
             <br/>
             <br />
-            <div class="cuadro">
-                <h1>Búsqueda rápida</h1>
-                <p></p>
-           </div>
 
            <br/>
            <br />
