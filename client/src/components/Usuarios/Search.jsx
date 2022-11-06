@@ -16,11 +16,11 @@ function Search({arraySearch, changeArray, reset}){
     const [tuitonS, setTuitonS] = useState()
 
     function resetSearch(){
-        reset()
         setIdS("")
         setRolS("")
         setTuitonS("")
         setnameS("")
+        reset()
     }
 
     function searchInArray(){
@@ -30,7 +30,7 @@ function Search({arraySearch, changeArray, reset}){
 
     function searchName(){
         console.table(arraySearch.filter(nameA => nameA.Name == nameS ))
-        return arraySearch.filter(nameA => nameA == nameS )
+        return arraySearch.filter(nameA => nameA.Name == nameS )
     }
 
     function searchId(){
@@ -51,10 +51,10 @@ function Search({arraySearch, changeArray, reset}){
             <Col>
                 <Row>
                     <Col>
-                        <Form.Control type="text" placeholder={"Id"} onChange={event => setIdS(event.target.value)} />
+                        <Form.Control type="text" placeholder={"Id"} value={idS} onChange={event => setIdS(event.target.value)} />
                     </Col>
                     <Col>
-                        <Form.Control type="text" placeholder={"Nombre"} onChange={event => setnameS(event.target.value)} />
+                        <Form.Control type="text" placeholder={"Nombre"} value={nameS} onChange={event => setnameS(event.target.value)} />
                     </Col>
                     <Col>
                     <DropdownButton
@@ -69,7 +69,7 @@ function Search({arraySearch, changeArray, reset}){
                     </DropdownButton>
                     </Col>
                     <Col>
-                        <Form.Control type="text" placeholder={"Matricula"} onChange={event => setTuitonS(event.target.value)} />
+                        <Form.Control type="text" placeholder={"Matricula"} value={tuitonS} onChange={event => setTuitonS(event.target.value)} />
                     </Col>
                     <Col>
                         <Button variant="success" onClick={searchInArray}>Buscar</Button>
