@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Upload from './Helpers/Upload';
 
 function Home(){
 
@@ -16,6 +17,7 @@ function Home(){
 
     return(
         <div class="contenedor">
+        <Upload/>
         <Container>
             <div class="header-buscador">
             <br/>
