@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         clientId={"8St2S8kY30UAh2iSsWbFSYjbEV9Uj3vg"}
         redirectUri={window.location.origin}>
       <App />
-    </Auth0Provider>
+    </Auth0Provider>      
     </BrowserRouter>
   </React.StrictMode>
 )

@@ -1,3 +1,4 @@
+from crypt import methods
 import os
 import logging
 from flask import Flask, request
@@ -7,8 +8,10 @@ from controllers.product import product
 from controllers.locatec_users import locatec_users
 from http_requests import product_http
 from http_requests import user_http
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 logging.basicConfig(level=logging.INFO)
 logging.info("Setting LOGLEVEL to INFO")
@@ -21,6 +24,12 @@ product_controller = product.Product(mysql_database)
 user_controller = locatec_users.Locatec_users(mysql_database)
 user_http = user_http.UsersHTTP(user_controller)
 product_http = product_http.ProductHTTP(product_controller)
+
+
+@app.route('/tuiton/<tuiton>', methods= ['GET'])
+def getTuiton(tuiton):
+    if request.method == 'GET':
+        return user_http.retrieve_one_tuiton(tuiton)
 
 
 @app.route('/product/<id>',methods = ['PUT', 'DELETE', 'GET'])
