@@ -4,7 +4,6 @@ import Button from "react-bootstrap/esm/Button";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import Form from 'react-bootstrap/Form';
-import Alert from 'react-bootstrap/Alert';
 
 function Search({setProductsFound}){
 
@@ -89,7 +88,11 @@ function Search({setProductsFound}){
         </Row>
         <br/>
         <Row className="justify-content-md-center">
-        <Button style={{ width: '25%' }} variant="primary" onClick={searchProducts}>Buscar</Button>
+            {searchStatement ?
+                <Button style={{ width: '25%' }} variant="primary" onClick={searchProducts}>Buscar</Button>
+            :
+                <Button style={{ width: '25%' }} variant="primary" disabled>Buscar</Button>
+            }
         </Row>
         </Col>
     )

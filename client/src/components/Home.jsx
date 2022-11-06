@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Upload from './Helpers/Upload';
 import Search from './Helpers/Search';
 import CardD from './Card';
 
@@ -13,7 +12,6 @@ function Home(){
 
     return(
         <div class="contenedor">
-        <Upload/>
         <Container>
             <div class="header-buscador">
             <br/>
