@@ -169,3 +169,23 @@ class Queries:
         self.connection.commit()
 
         return "ok"
+
+    def retrieve_tuiton(self, tuiton: str) -> str:
+        user_found = []
+        sql = f"SELECT id, Name FROM {USERS_DATABASE} WHERE Tuiton = '{tuiton}'"
+
+        self.mycursor.execute(sql)
+
+        myresult = self.mycursor.fetchall()
+
+        for user in myresult:
+            user_found.append(user)
+
+        res = user_found[0]
+        
+        user_return = {
+            "ID": res[0],
+            "Name": res[1]
+        }
+
+        return user_return

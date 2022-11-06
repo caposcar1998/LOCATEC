@@ -28,3 +28,6 @@ class Locatec_users(LocatecUsersInterface):
 
     def readOne(self, id: str)->Any:
         return self.database.read_user(id)
+
+    def retrieveTuiton(self, tuiton: str)-> str:
+        return self.database.retrieve_tuiton(tuiton)
