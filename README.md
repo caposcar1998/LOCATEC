@@ -26,6 +26,13 @@ infra/deploy/local/docker-compose up
 
 For local run of the frontend:
 
+Add .env file with:
+
+```bash
+VITE_APP_ID_AWS
+VITE_APP_KEY_AWS
+```
+
 ```bash
 npm i
 npm run dev

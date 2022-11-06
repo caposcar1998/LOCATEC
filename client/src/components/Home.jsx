@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Upload from './Helpers/Upload';
 
 function Home(){
 
@@ -21,6 +22,7 @@ function Home(){
              <Form.Control type="text" placeholder="Buscar" onChange={event => setMessage(event.target.value)} />
              <Button variant="primary" onClick={handleChange}>Buscar</Button>
                 <h1>Buscas algo en particular?</h1>
+                <Upload/>
             </Row>
             </Col>
         </Container>
