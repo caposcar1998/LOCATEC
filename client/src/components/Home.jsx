@@ -6,8 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { FaBeer, FaFacebookSquare, FaTwitterSquare } from 'react-icons/fa';
-
-
+import Upload from './Helpers/Upload';
 
 function Home(){
 

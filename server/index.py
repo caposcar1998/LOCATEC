@@ -1,3 +1,4 @@
+from crypt import methods
 import os
 import logging
 from flask import Flask, request
@@ -23,6 +24,12 @@ product_controller = product.Product(mysql_database)
 user_controller = locatec_users.Locatec_users(mysql_database)
 user_http = user_http.UsersHTTP(user_controller)
 product_http = product_http.ProductHTTP(product_controller)
+
+
+@app.route('/tuiton/<tuiton>', methods= ['GET'])
+def getTuiton(tuiton):
+    if request.method == 'GET':
+        return user_http.retrieve_one_tuiton(tuiton)
 
 
 @app.route('/product/<id>',methods = ['PUT', 'DELETE', 'GET'])

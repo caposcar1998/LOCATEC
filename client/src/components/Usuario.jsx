@@ -5,7 +5,9 @@ import Button from 'react-bootstrap/Button';
 import axios from "axios";
 import ModalO from "./ModalO";
 import AlertO from "./AlertO";
-import ModalCreate from "./ModalCreate";
+import ModalCreate from "./Usuarios/ModalCreate";
+import ModalEdit from "./Usuarios/ModalEdit";
+import Search from "./Usuarios/Search";
 
 function Usuario(){
 
@@ -16,6 +18,11 @@ function Usuario(){
     const [messageError, setMessageError] = useState('')
     const [variante, setVariante]= useState("primary")
     const [showCreate, setShowCreate] = useState(false)
+    const [showEdit, setShowEdit] = useState(false)
+    const [nombreEditar, setNombreEditar] = useState("")
+    const [rolEditar, setRolEditar] = useState("")
+    const [tuitonEdit, setTuitonEdit] = useState("")
+    const [idEdit, setIdEdit] = useState(0)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -58,6 +65,14 @@ function Usuario(){
         })
     }
 
+    function editUser(idUser, name, rol, tuiton){
+        setShowEdit(true)
+        setNombreEditar(name)
+        setRolEditar(rol)
+        setTuitonEdit(tuiton)
+        setIdEdit(idUser)
+    }
+
 
     useEffect(() => {
         retrieveUsers()
@@ -86,6 +101,24 @@ function Usuario(){
             setMessageError={setMessageError}
             setShowAlert={setShowAlert} 
             />
+            {showEdit &&
+                        <ModalEdit
+                        show={showEdit}
+                        setShow={setShowEdit}
+                        setVariante={setVariante}
+                        setMessageError={setMessageError}
+                        setShowAlert={setShowAlert} 
+                        nombre={nombreEditar}
+                        rol={rolEditar}
+                        matricula={tuitonEdit}
+                        id={idEdit}
+                        />
+            }
+            <Search
+            arraySearch={users}
+            changeArray={setUsers}  
+            reset={retrieveUsers}          
+            />
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -107,7 +140,7 @@ function Usuario(){
                     <td>{item["Rol"]}</td>
                     <td>{item["Tuiton"]}</td>
                     <td>
-                        <Button variant="warning">Editar</Button>
+                        <Button variant="warning" onClick={() => editUser(item["ID"], item["Name"], item["Rol"], item["Tuiton"])}>Editar</Button>
                         <Button variant="danger" onClick={() => selectUserDelete(item["ID"])}>Eliminar</Button>
                     </td>
                     </tr>
