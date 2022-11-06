@@ -1,7 +1,14 @@
+.contenedor{
+    background-color: #EDEEF5;
+    height: 100%;
+}
 .header-buscador{
-    background-color: #081CAD;
+    background-color: hsl(233, 91%, 35%);
     padding-left: 20px;
     padding-right: 20px;
+    background-image: url(../public/logo_borrego_opaco.png);
+    background-position: center center;
+    background-size: cover;
 }
 
 .tituloBlanco{
@@ -10,10 +17,35 @@
 }
 
 .presentacionCartas{
-    background-color: red;
-    
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .prueba1{
-    background-color: green;
+    text-align: center;
+}
+
+.prueba1 h1{
+    font-weight: bold;
+}
+
+.carta{
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .07) !important;
+}
+.cuadro{
+    text-align: center;
+    background-color: #ffffff;
+    padding-bottom: 1.4em;
+    padding-top: 1.4em;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .07) !important;
+}
+
+footer{
+    text-align: center;
+}
+
+.pie{
+    display: flex;
+    justify-content: space-between;
 }

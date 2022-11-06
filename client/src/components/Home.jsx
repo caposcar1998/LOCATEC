@@ -5,7 +5,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+import { FaBeer, FaFacebookSquare, FaTwitterSquare } from 'react-icons/fa';
+
 
 
 function Home(){
@@ -17,6 +18,7 @@ function Home(){
       };
 
     return(
+        <div class="contenedor">
         <Container>
             <div class="header-buscador">
             <br/>
@@ -40,10 +42,13 @@ function Home(){
             <br/>
             </div>
 
+            <br/>
+
             <div class="prueba1">
                 <h1>Find your answer by subject</h1>
                 <br></br>
                 <div class="presentacionCartas">
+                    <div class="carta">
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src="holder.js/100px180" />
                         <Card.Body>
@@ -55,7 +60,8 @@ function Home(){
                         <Button variant="primary">Ir</Button>
                         </Card.Body>
                     </Card>
-
+                    </div>
+                    <div class="carta">
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src="holder.js/100px180" />
                         <Card.Body>
@@ -67,7 +73,8 @@ function Home(){
                         <Button variant="primary">Ir</Button>
                         </Card.Body>
                     </Card>
-
+                    </div>
+                    <div class="carta">
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src="holder.js/100px180" />
                         <Card.Body>
@@ -79,20 +86,36 @@ function Home(){
                         <Button variant="primary">Ir</Button>
                         </Card.Body>
                     </Card>
+                    </div>
                 </div>
             </div>
-            <div>
-            <h1>Didn’t find an answer to your question?</h1>
-            <h2>Musce libero nunc, dignissim quis turpis quis, semper vehicula dolor. Suspendisse tincidunt consequat quam.</h2>
-            <button>Contact us</button>
+
+            <br/>
+            <br />
+            <div class="cuadro">
+                <h1>Didn’t find an answer to your question?</h1>
+                <p>Musce libero nunc, dignissim quis turpis quis, semper vehicula dolor. Suspendisse tincidunt consequat quam.</p>
+            <Button>Contact us</Button>
            </div>
 
-           <div>
+           <br/>
+           <br />
+
            <footer>
-            <h1>Copyright © 2020 Designed and Developed by themefisher</h1>
+           <div class="pie">
+            <div>
+            <p>Copyright © 2020 Designed and Developed by themefisher.</p>
+            </div>
+            <div>
+            <p><FaFacebookSquare/><FaTwitterSquare/></p>
+            </div>
+            </div>
            </footer>
-           </div>
+           <br/>
+           <br />
+
         </Container>
+        </div>
     )
 }
 
