@@ -42,6 +42,13 @@ class UsersHTTP():
         except Exception as e:
             return self.response_format(500, str(e))
 
+    def retrieve_one_tuiton(self, tuiton):
+        try:
+            res = self.controller_user.retrieveTuiton(tuiton)
+            return self.response_format(200,res)
+        except Exception as e:
+            return self.response_format(500, str(e))
+
 
     def response_format(self, code, result):
         return {

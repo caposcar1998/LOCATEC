@@ -1,59 +1,51 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.contenedor{
+    background-color: #EDEEF5;
+    height: 100%;
+}
+.header-buscador{
+    background-color: hsl(233, 91%, 35%);
+    padding-left: 20px;
+    padding-right: 20px;
+    background-image: url(../public/logo_borrego_opaco.png);
+    background-position: center center;
+    background-size: cover;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.tituloBlanco{
+    color:#ffffff;
+    text-align: center;
 }
 
-.logoi{
-  margin-right: 12px;
-}
-.busqueda{
-  display: flex;
-}
-
-.barra{
-  height: 30px;
-  padding-top: 30px;
+.presentacionCartas{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.prueba1{
+    text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.prueba1 h1{
+    font-weight: bold;
 }
 
-.cardi {
-  border-style: solid;
-  border-color: lightblue;
-  border-radius: 30px;
-  padding: 2em;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+.carta{
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .07) !important;
+}
+.cuadro{
+    text-align: center;
+    background-color: #ffffff;
+    padding-bottom: 1.4em;
+    padding-top: 1.4em;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .07) !important;
 }
 
-.read-the-docs {
-  color: #888;
+footer{
+    text-align: center;
+}
+
+.pie{
+    display: flex;
+    justify-content: space-between;
 }
