@@ -44,6 +44,8 @@ function Home(){
                                 pic={item["Picture"]}
                                 recover={null}
                                 idProduct={item["ID"]}
+                                found={item["Found"]}
+                                looker={item["Looker"]}
                                 />
                             </Col>
                             ))}

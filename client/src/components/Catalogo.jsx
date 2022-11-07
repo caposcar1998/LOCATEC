@@ -122,6 +122,8 @@ function Catalogo(){
                             recover={recoverProduct}
                             idProduct={item["ID"]}
                             deleteA={selectUserDelete}
+                            found={item["Found"]}
+                            looker={item["Looker"]}
                             />
                         </Col>
 
