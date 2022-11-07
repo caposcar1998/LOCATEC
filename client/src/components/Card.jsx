@@ -9,7 +9,14 @@ function CardD({name, description, pic, recover, idProduct}){
     return(
         <>
             <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={pic} />
+            <Card.Img 
+            variant="top"
+            src={pic}
+            style={{
+                "max-height": "250px",
+                "max-width": "350px"
+            }}
+            />
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
                 <Card.Text>

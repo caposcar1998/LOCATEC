@@ -5,6 +5,8 @@ import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import ModalRecover from "./Objects/ModalRecover";
 import AlertO from "./AlertO";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
 
 function Catalogo(){
 
@@ -58,16 +60,22 @@ function Catalogo(){
                                     idArticulo={productRecover}
                 />
             }
-            
-            {products.map((item, index) => (
-            <CardD
-            name={item["Name"]}
-            description={item["Description"]}
-            pic={item["Picture"]}
-            recover={recoverProduct}
-            idProduct={item["ID"]}
-            />
-            ))}
+            <Container>
+                <Row>
+                    {products.map((item, index) => (
+                        <Col xs={4}>
+                            <CardD
+                            name={item["Name"]}
+                            description={item["Description"]}
+                            pic={item["Picture"]}
+                            recover={recoverProduct}
+                            idProduct={item["ID"]}
+                            />
+                        </Col>
+
+                    ))}
+                </Row>
+            </Container>
         </Container>
     )
 }
