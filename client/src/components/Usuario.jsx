@@ -55,7 +55,8 @@ function Usuario(){
             }else{
                 setVariante("success")
                 setMessageError("Operacion realizada con exito")
-                setShowAlert(true)                
+                setShowAlert(true)  
+                window.location.reload(false);               
             }
         })
         .catch(e => {

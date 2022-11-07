@@ -7,6 +7,7 @@ import ModalRecover from "./Objects/ModalRecover";
 import AlertO from "./AlertO";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
+import ModalO from "./ModalO";
 
 function Catalogo(){
 
@@ -16,10 +17,20 @@ function Catalogo(){
     const [messageError, setMessageError] = useState('')
     const [showAlert, setShowAlert] = useState(false);
     const [productRecover, setProductRecover] = useState(0)
+    const [show, setShow] = useState(false);
+    const [productDelete, setProductDelete] = useState()
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     function recoverProduct(idProduct){
         setProductRecover(idProduct)
         setShowRecover(true)
+    }
+
+    function selectUserDelete(idUser){
+        handleShow()
+        setProductDelete(idUser)
     }
 
     function retrieveProducts(){
@@ -30,9 +41,6 @@ function Catalogo(){
         })
         .catch(e => {
             console.log(e)
-            return (<Alert key={"danger"} variant={"danger"}>
-            {e}
-          </Alert>)
         })
     }
 
@@ -40,10 +48,39 @@ function Catalogo(){
         retrieveProducts()
       }, []);
 
+      function deleteProduct(){
+        axios.delete(`http://localhost:5000/product/${productDelete}`)
+        .then(response => {
+            if (response["data"]["code"] == 500 ){
+                setVariante("danger")
+                setMessageError("Error al eliminar el producto")
+                setShowAlert(true)
+            }else{
+                setVariante("success")
+                setMessageError("Operacion realizada con exito")
+                setShowAlert(true)     
+                window.location.reload(false);           
+            }
+        })
+        .catch(e => {
+                setVariante("danger")
+                setMessageError("Error al eliminar el producto")
+                setShowAlert(true)
+        })
+    }
+
 
 
     return(
         <Container>
+            <ModalO
+            show={show}
+            handleClose={handleClose}
+            action={deleteProduct}
+            title={"Eliminar producto"}
+            description={"Estas seguro que deseas eliminar este producto?"}
+            titleAction={"Si"}
+            />
             <AlertO
             message={messageError}
             variant={variante}
@@ -70,6 +107,7 @@ function Catalogo(){
                             pic={item["Picture"]}
                             recover={recoverProduct}
                             idProduct={item["ID"]}
+                            deleteA={selectUserDelete}
                             />
                         </Col>
 
