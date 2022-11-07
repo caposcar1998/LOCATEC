@@ -157,7 +157,10 @@ function ModalCreate({show, setShow, setVariante, setMessageError, setShowAlert 
                             </DropdownButton>
                         </Col>
                     </Row>
-                    <Row>
+                    {
+                        nombre && description && location && color && category
+                        &&
+                        <Row>
                         <Col>
                             <Upload
                             setUploadFile={setUploadFile}
@@ -165,15 +168,23 @@ function ModalCreate({show, setShow, setVariante, setMessageError, setShowAlert 
                             />
                         </Col>
                     </Row>
-                    <Row>
+                    }
+                    {
+                    nombre && description && location && color && category && uploadFile
+                    &&    
+                        <>
+                        <Row>
                         <Col>
                             <Form.Control type="text" placeholder="Matricula" onChange={event => setMatricula(event.target.value)} />
                         </Col>
                         <Col>
                             <Button variant="primary" onClick={findTuiton}>Buscar por matricula</Button>
                         </Col>
-                    </Row>
+                        </Row>
                     <Row>{finder && finder}</Row>
+                    </>
+                    }
+ 
                     {uploadFile && finder ?
                         <Button variant="success" onClick={createUser}>Crear</Button>
                     :
