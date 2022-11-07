@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Search from './Helpers/Search';
 import CardD from './Card';
+import Col from 'react-bootstrap/esm/Col';
+import Row from "react-bootstrap/esm/Row";
 
 function Home(){
 
@@ -31,15 +33,22 @@ function Home(){
                 <div class="cuadro">
                     <h1>Búsqueda rápida</h1>
                     {productsFound.length > 0 ?
-                    productsFound.map((item, index) => (
-                        <CardD
-                        name={item["Name"]}
-                        description={item["Description"]}
-                        pic={item["Picture"]}
-                        recover={null}
-                        idProduct={item["ID"]}
-                        />
-                        ))
+                    <Container>
+                        <Row>
+                        {
+                        productsFound.map((item, index) => (
+                            <Col xs={4}>
+                                <CardD
+                                name={item["Name"]}
+                                description={item["Description"]}
+                                pic={item["Picture"]}
+                                recover={null}
+                                idProduct={item["ID"]}
+                                />
+                            </Col>
+                            ))}
+                        </Row>
+                    </Container>
                     :
                         <p>Busca algun producto en la parte de arriba</p>
                 }
