@@ -8,6 +8,8 @@ import AlertO from "./AlertO";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import ModalO from "./ModalO";
+import ModalCreate from "./Objects/ModalCreate";
+import Button from "react-bootstrap/esm/Button";
 
 function Catalogo(){
 
@@ -19,6 +21,8 @@ function Catalogo(){
     const [productRecover, setProductRecover] = useState(0)
     const [show, setShow] = useState(false);
     const [productDelete, setProductDelete] = useState()
+    const [showCreate, setShowCreate] = useState(false)
+    
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -87,6 +91,13 @@ function Catalogo(){
             showValue={showAlert}
             setShowValue={setShowAlert}
             />
+            <ModalCreate
+                show={showCreate}
+                setShow={setShowCreate}
+                setVariante={setVariante}
+                setMessageError={setMessageError}
+                setShowAlert={setShowAlert} 
+            />
             {
                 showRecover && <ModalRecover
                                     show={showRecover}
@@ -98,6 +109,9 @@ function Catalogo(){
                 />
             }
             <Container>
+                <Row>
+                <Button variant="primary" onClick={()=> setShowCreate(true)}>Crear Nuevo</Button>
+                </Row>
                 <Row>
                     {products.map((item, index) => (
                         <Col xs={4}>

@@ -17,7 +17,7 @@ const myBucket = new AWS.S3({
     region: REGION,
 })
 
-function Upload(){
+function Upload({setUploadFile, setUrlFile}){
 
     const [progress , setProgress] = useState(0);
     const [selectedFile, setSelectedFile] = useState(null);
@@ -40,16 +40,21 @@ function Upload(){
                 setProgress(Math.round((evt.loaded / evt.total) * 100))
             })
             .send((err) => {
-                if (err) console.log(err)
+                if (err){
+                    console.log(err)
+                }else{
+                    console.log("exito")
+                    setUploadFile(true)
+                    setUrlFile("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Nuvola_apps_error.svg/1200px-Nuvola_apps_error.svg.png")
+                }
             })
     }
 
     return (
-        <Container>
-            <div>Native SDK File Upload Progress is {progress}%</div>
+        <>
             <Form.Control type="file" placeholder={"Id"} onChange={handleFileInput} />
             <Button variant="success" onClick={() => uploadFile(selectedFile)}>Subir archivo</Button>
-        </Container>
+        </>
         )
 
 }
