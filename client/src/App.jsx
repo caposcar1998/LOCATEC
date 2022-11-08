@@ -20,9 +20,9 @@ function App() {
       <NavBar/>
       <Routes>
         <Route exact path="/" element={<Home/>}/>
+        <Route exact path ="/catalogo" element={<Catalogo/>}/>
         {isAuthenticated ? 
           <>
-            <Route exact path ="/catalogo" element={<Catalogo/>}/>
             <Route exact path ="/usuario" element={<Usuario/>}/>
             <Route exact path='*' element={<NoPage/>}/> 
           </>
