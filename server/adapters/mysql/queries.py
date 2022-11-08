@@ -10,16 +10,18 @@ class Queries:
 
     def __init__(self):
         self.connection = connect_database()
-        self.mycursor = self.connection.cursor()
+        self.mycursor = self.connection.cursor(buffered=True)
 
     # PRODUCTS
 
     def create_product(self, product: ProductModel):
-        sql = f"INSERT INTO {PRODUCT_DATABASE} (Name, Description, Location, FinderID, Color, LookerID, Found, Category) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-        val = (product["name"], product["description"], product["location"], product["finder"], product["color"], product["looker"], False, product['category'])
+        sql = f"INSERT INTO {PRODUCT_DATABASE} (Name, Description, Location, FinderID, Color, LookerID, Found, Category, Picture) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        val = (product["name"], product["description"], product["location"], product["finder"], product["color"], product["looker"], False, product['category'], product["picture"])
         self.mycursor.execute(sql, val)
 
         self.connection.commit()
+
+        self.connection.close()
 
         return "ok"
 
