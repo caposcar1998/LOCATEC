@@ -124,6 +124,8 @@ function Catalogo(){
                             deleteA={selectUserDelete}
                             found={item["Found"]}
                             looker={item["Looker"]}
+                            color={item["Color"]}
+                            location={item["Location"]}
                             />
                         </Col>
 

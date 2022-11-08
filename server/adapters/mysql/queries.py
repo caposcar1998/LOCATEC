@@ -10,7 +10,7 @@ class Queries:
 
     def __init__(self):
         self.connection = connect_database()
-        self.mycursor = self.connection.cursor()
+        self.mycursor = self.connection.cursor(buffered=True)
 
     # PRODUCTS
 
@@ -20,6 +20,8 @@ class Queries:
         self.mycursor.execute(sql, val)
 
         self.connection.commit()
+
+        self.connection.close()
 
         return "ok"
 
