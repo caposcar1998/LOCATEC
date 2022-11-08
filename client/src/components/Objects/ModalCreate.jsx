@@ -24,7 +24,7 @@ function ModalCreate({show, setShow, setVariante, setMessageError, setShowAlert 
     const [urlFile, setUrlFile] = useState("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Nuvola_apps_error.svg/1200px-Nuvola_apps_error.svg.png")
 
     function createUser(){
-        axios.post(`http://localhost:5000/product`,
+        axios.post(`${import.meta.env.VITE_APP_API}/product`,
             {
                 "name": nombre ,
                 "description": description,
@@ -54,7 +54,7 @@ function ModalCreate({show, setShow, setVariante, setMessageError, setShowAlert 
     }
 
     function findTuiton(){
-        axios.get(`http://localhost:5000/tuiton/${matricula}`).then(response => {
+        axios.get(`${import.meta.env.VITE_APP_API}/tuiton/${matricula}`).then(response => {
             if (response["data"]["code"] == 500){
                 setShow(false)
                 setVariante("warning")
