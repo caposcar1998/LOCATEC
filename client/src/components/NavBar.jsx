@@ -30,10 +30,11 @@ const NavBar = () =>{
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link onClick={() => {handleClick("/");}}>Home</Nav.Link>
+            <Nav.Link onClick={() => {handleClick("/catalogo");}}>Objetos</Nav.Link>
             {
                 isAuthenticated ?
                   <>
-                    <Nav.Link onClick={() => {handleClick("/catalogo");}}>Objetos</Nav.Link>
+                    
                     <Nav.Link onClick={() => {handleClick("/usuario");}}>Usuarios</Nav.Link>
                     <Nav.Item><Button variant="outline-danger" onClick={LogOut}>Logout</Button></Nav.Item> 
                   </>
