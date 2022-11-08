@@ -38,8 +38,8 @@ function CardD({name, description, pic, recover, idProduct, deleteA, found, look
             variant="top"
             src={pic}
             style={{
-                "max-height": "250px",
-                "max-width": "350px"
+                "maxHeight": "250px",
+                "maxWidth": "350px"
             }}
             />
             <Card.Body>
