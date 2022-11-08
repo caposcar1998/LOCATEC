@@ -16,7 +16,7 @@ function CardD({name, description, pic, recover, idProduct, deleteA, found, look
       }, []);
 
     function findUser(){
-        axios.get(`http://localhost:5000/user/${looker}`).then(response => {
+        axios.get(`${import.meta.env.VITE_APP_API}/user/${looker}`).then(response => {
             if (response["data"]["code"] == 500){
                 setA("Error")
             }else{

@@ -15,7 +15,7 @@ function ModalRecover({show, setShow, setVariante, setMessageError, setShowAlert
     const status = true
 
     function findTuiton(){
-        axios.get(`http://localhost:5000/tuiton/${matricula}`).then(response => {
+        axios.get(`${import.meta.env.VITE_APP_API}/tuiton/${matricula}`).then(response => {
             if (response["data"]["code"] == 500){
                 setShow(false)
                 setVariante("warning")
@@ -38,7 +38,7 @@ function ModalRecover({show, setShow, setVariante, setMessageError, setShowAlert
     }
 
     function deliverProduct(){
-        axios.put(`http://localhost:5000/product/${idArticulo}/status/${status}/looker/${id}`)        
+        axios.put(`${import.meta.env.VITE_APP_API}/product/${idArticulo}/status/${status}/looker/${id}`)        
         .then(response => {
             setShow(false)
             console.log(response)

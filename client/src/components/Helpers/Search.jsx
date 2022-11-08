@@ -12,7 +12,7 @@ function Search({setProductsFound}){
     const [searchStatement, setSearchStatement] = useState()
 
     function searchProducts(){
-        axios.get("http://localhost:5000/product")
+        axios.get(`${import.meta.env.VITE_APP_API}/product`)
         .then(response => {
             setSearchArray(response["data"]["result"])
         }).then(products => {

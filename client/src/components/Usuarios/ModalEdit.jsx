@@ -22,7 +22,7 @@ function ModalEdit({show, setShow, setVariante, setMessageError, setShowAlert, n
 
     function editUser(){
         console.log(nombre, rol, matricula)
-        axios.put(`http://localhost:5000/user/${idO}`,
+        axios.put(`${import.meta.env.VITE_APP_API}/user/${idO}`,
         {
             "name":nombreO,
             "tuiton":rolO,

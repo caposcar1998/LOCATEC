@@ -38,7 +38,7 @@ function Catalogo(){
     }
 
     function retrieveProducts(){
-        axios.get("http://localhost:5000/product")
+        axios.get(`${import.meta.env.VITE_APP_API}/product`)
         .then(response => {
             setProducts(response["data"]["result"])
             console.log(response)
@@ -53,7 +53,7 @@ function Catalogo(){
       }, []);
 
       function deleteProduct(){
-        axios.delete(`http://localhost:5000/product/${productDelete}`)
+        axios.delete(`${import.meta.env.VITE_APP_API}/product/${productDelete}`)
         .then(response => {
             if (response["data"]["code"] == 500 ){
                 setVariante("danger")

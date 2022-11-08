@@ -33,7 +33,7 @@ function Usuario(){
     }
 
     function retrieveUsers(){
-        axios.get("http://localhost:5000/user")
+        axios.get(`${import.meta.env.VITE_APP_API}/user`)
         .then(response => {
             setUsers(response["data"]["result"])
             console.log(response)
@@ -46,7 +46,7 @@ function Usuario(){
     }
 
     function deleteUsers(){
-        axios.delete(`http://localhost:5000/user/${userDelete}`)
+        axios.delete(`${import.meta.env.VITE_APP_API}/user/${userDelete}`)
         .then(response => {
             if (response["data"]["code"] == 500 ){
                 setVariante("danger")

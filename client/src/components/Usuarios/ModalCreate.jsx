@@ -14,7 +14,7 @@ function ModalCreate({show, setShow, setVariante, setMessageError, setShowAlert 
 
     function createUser(){
         console.log(nombre, rol, matricula)
-        axios.post(`http://localhost:5000/user`,
+        axios.post(`${import.meta.env.VITE_APP_API}/user`,
         {
             "name":nombre,
             "tuiton":matricula,
