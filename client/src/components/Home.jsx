@@ -46,6 +46,8 @@ function Home(){
                                 idProduct={item["ID"]}
                                 found={item["Found"]}
                                 looker={item["Looker"]}
+                                color={item["Color"]}
+                                location={item["Location"]}
                                 />
                             </Col>
                             ))}
