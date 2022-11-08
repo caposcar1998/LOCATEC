@@ -10,6 +10,5 @@ def connect_database():
     user="root",
     password="root",
     database="locatec",
-    port=3306,
-    ssl_disabled=False
+    port=3306
     )
