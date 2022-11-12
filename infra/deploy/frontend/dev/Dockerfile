@@ -10,6 +10,7 @@ COPY ./client/package.json ./
 COPY ./client/package-lock.json ./
 RUN npm install
 
+
 # add app
 COPY ./client ./
 

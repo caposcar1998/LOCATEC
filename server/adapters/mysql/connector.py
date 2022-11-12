@@ -11,5 +11,5 @@ def connect_database():
     password="root",
     database="locatec",
     port=3306,
-    ssl_disabled=False
+    auth_plugin='mysql_native_password'
     )
