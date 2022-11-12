@@ -20,4 +20,4 @@ scrape_configs:
   - job_name: 'server'
     scrape_interval: 5s
     static_configs:
-      - targets: ['server:5000']
+      - targets: ['server:5000', 'https://ec2-54-91-184-176.compute-1.amazonaws.com:5000/']
