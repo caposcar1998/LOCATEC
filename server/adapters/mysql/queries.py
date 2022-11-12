@@ -21,7 +21,6 @@ class Queries:
 
         self.connection.commit()
 
-        self.connection.close()
 
         return "ok"
 
