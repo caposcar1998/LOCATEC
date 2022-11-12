@@ -1,5 +1,5 @@
 # start by pulling the python image
-FROM python:3.9-alpine
+FROM python:3.10
 
 # switch working directory
 WORKDIR /app

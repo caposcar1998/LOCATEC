@@ -26,6 +26,13 @@ infra/deploy/local/docker-compose up
 
 For local run of the frontend:
 
+Add .env file with:
+
+```bash
+VITE_APP_ID_AWS
+VITE_APP_KEY_AWS
+```
+
 ```bash
 npm i
 npm run dev
@@ -57,11 +64,31 @@ url: http://prometheus:9090
 
 ```bash
 sudo yum update -y
+sudo yum install firewalld -y 
+firewall-cmd --add-service=http --permanent
+firewall-cmd --reload
 sudo yum install docker -y
+sudo yum install git -y
 sudo service docker start
 git clone https://github.com/caposcar1998/LOCATEC.git
+git checkout staging
 sudo su
-sudo curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)"  -o /usr/local/bin/docker-compose
+sudo mv /usr/local/bin/docker-compose /usr/bin/docker-compose
+sudo chmod +x /usr/bin/docker-compose
+cd LOCATEC/
+make run
+
+```
+
+2. ON AWS console add to security group the TCP through all intervals and all IP's
+
+### Start Docker afresh
+
+```
+sudo docker rm -vf $(sudo docker ps -aq)
+sudo docker rmi -f $(sudo docker images -aq)
+make run
 ```
 
 ## API

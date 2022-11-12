@@ -10,16 +10,18 @@ class Queries:
 
     def __init__(self):
         self.connection = connect_database()
-        self.mycursor = self.connection.cursor()
+        self.mycursor = self.connection.cursor(buffered=True)
 
     # PRODUCTS
 
     def create_product(self, product: ProductModel):
-        sql = f"INSERT INTO {PRODUCT_DATABASE} (Name, Description, Location, FinderID, Color, LookerID, Found, Category) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-        val = (product["name"], product["description"], product["location"], product["finder"], product["color"], product["looker"], False, product['category'])
+        sql = f"INSERT INTO {PRODUCT_DATABASE} (Name, Description, Location, FinderID, Color, LookerID, Found, Category, Picture) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        val = (product["name"], product["description"], product["location"], product["finder"], product["color"], product["looker"], False, product['category'], product["picture"])
         self.mycursor.execute(sql, val)
 
         self.connection.commit()
+
+        self.connection.close()
 
         return "ok"
 
@@ -169,3 +171,23 @@ class Queries:
         self.connection.commit()
 
         return "ok"
+
+    def retrieve_tuiton(self, tuiton: str) -> str:
+        user_found = []
+        sql = f"SELECT id, Name FROM {USERS_DATABASE} WHERE Tuiton = '{tuiton}'"
+
+        self.mycursor.execute(sql)
+
+        myresult = self.mycursor.fetchall()
+
+        for user in myresult:
+            user_found.append(user)
+
+        res = user_found[0]
+        
+        user_return = {
+            "ID": res[0],
+            "Name": res[1]
+        }
+
+        return user_return
