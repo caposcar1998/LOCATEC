@@ -15,17 +15,9 @@ scrape_configs:
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
     static_configs:
-    - targets: ['prometheus:9090', 'ec2-54-91-184-176.compute-1.amazonaws.com:9090']
-
+    - targets: ['prometheus:9090']
 
   - job_name: 'server'
     scrape_interval: 5s
     static_configs:
       - targets: ['server:5000']
-
-  - job_name: 'server-https'
-  
-    scrape_interval: 5s
-    scheme: https
-    static_configs:
-      - targets: [ec2-54-91-184-176.compute-1.amazonaws.com:5000]
