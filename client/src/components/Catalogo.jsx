@@ -11,6 +11,7 @@ import ModalO from "./ModalO";
 import ModalCreate from "./Objects/ModalCreate";
 import Button from "react-bootstrap/esm/Button";
 import ModalEdit from "./Objects/ModalEdit";
+import Search from "./Objects/Search.jsx";
 
 function Catalogo(){
 
@@ -151,6 +152,9 @@ function Catalogo(){
             <Container>
                 <Row>
                 <Button variant="primary" onClick={()=> setShowCreate(true)}>Crear Nuevo</Button>
+                </Row>
+                <Row>
+                   <Search arraySearch={products} changeArray={setProducts} reset={retrieveProducts}></Search>
                 </Row>
                 <Row>
                     {products.map((item, index) => (
