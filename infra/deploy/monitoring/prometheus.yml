@@ -5,8 +5,7 @@ global:
   # scrape_timeout is set to the global default (10s).
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
-  # - "first_rules.yml"
-  # - "second_rules.yml"
+  - 'prometheus.rules.yml'
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
 scrape_configs:
@@ -14,12 +13,14 @@ scrape_configs:
   - job_name: 'prometheus'
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
-    scheme: https
+    scheme: http
     static_configs:
     - targets: ['prometheus:9090']
 
   - job_name: 'server'
-    scheme: https
     scrape_interval: 5s
+    scheme: https
     static_configs:
-      - targets: ['server:5000', 'localhost:5000']
+      - targets: ['server:5000']
+    tls_config:
+          insecure_skip_verify: true
