@@ -10,6 +10,7 @@ import Col from "react-bootstrap/esm/Col";
 import ModalO from "./ModalO";
 import ModalCreate from "./Objects/ModalCreate";
 import Button from "react-bootstrap/esm/Button";
+import ModalEdit from "./Objects/ModalEdit";
 
 function Catalogo(){
 
@@ -22,6 +23,16 @@ function Catalogo(){
     const [show, setShow] = useState(false);
     const [productDelete, setProductDelete] = useState()
     const [showCreate, setShowCreate] = useState(false)
+    const [showEdit, setShowEdit] = useState(false)
+
+    const [idEdit, SetIdEdit] = useState(0)
+    const [nombreEdit, setNombreEdit] = useState("")
+    const [descriptionEdit, setDescriptionEdit] = useState("")
+    const [matriculaEdit, setMatriculaEdit] = useState("")
+    const [locationEdit, setLocationEdit] = useState("")
+    const [colorEdit, setColorEdit] = useState("")
+    const [categoryEdit, setCategoryEdit] = useState("")
+    const [urlFileEdit, setUrlFileEdit] = useState("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Nuvola_apps_error.svg/1200px-Nuvola_apps_error.svg.png")
     
 
     const handleClose = () => setShow(false);
@@ -35,6 +46,18 @@ function Catalogo(){
     function selectUserDelete(idUser){
         handleShow()
         setProductDelete(idUser)
+    }
+
+    function editProduct(idProduct, name, description, pic,  category, location, color, tuiton){
+        setShowEdit(true)
+        SetIdEdit(idProduct)
+        setNombreEdit(name)
+        setDescriptionEdit(description)
+        setUrlFileEdit(pic)
+        setCategoryEdit(category)
+        setLocationEdit(location)
+        setMatriculaEdit(tuiton)
+        setColorEdit(color)
     }
 
     function retrieveProducts(){
@@ -98,6 +121,23 @@ function Catalogo(){
                 setMessageError={setMessageError}
                 setShowAlert={setShowAlert} 
             />
+            {showEdit &&
+                <ModalEdit
+                show={showEdit}
+                setShow={setShowEdit}
+                setVariante={setVariante}
+                setMessageError={setMessageError}
+                setShowAlert={setShowAlert}
+                idProduct={idEdit}
+                nombre={nombreEdit}
+                description={descriptionEdit}
+                pic={urlFileEdit}
+                category={categoryEdit}
+                location={locationEdit}
+                color={colorEdit}
+                tuiton={matriculaEdit}
+                />
+            }
             {
                 showRecover && <ModalRecover
                                     show={showRecover}
@@ -126,6 +166,8 @@ function Catalogo(){
                             looker={item["Looker"]}
                             color={item["Color"]}
                             location={item["Location"]}
+                            category={item["Category"]}
+                            editProduct={editProduct}
                             />
                         </Col>
 
