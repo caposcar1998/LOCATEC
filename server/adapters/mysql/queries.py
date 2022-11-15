@@ -9,8 +9,7 @@ USERS_DATABASE = "tecusers"
 class Queries:
 
     def __init__(self):
-        self.connection = connect_database()
-        self.mycursor = self.connection.cursor(buffered=True)
+        pass
 
     # PRODUCTS
 
@@ -25,6 +24,8 @@ class Queries:
         return "ok"
 
     def read_all_products(self) -> list:
+        self.connection = connect_database()
+        self.mycursor = self.connection.cursor(buffered=True)
         products_found = []
         self.mycursor.execute(f"SELECT * FROM {PRODUCT_DATABASE}")
 
@@ -48,6 +49,8 @@ class Queries:
         return products_found
 
     def read_product(self, id: int):
+        self.connection = connect_database()
+        self.mycursor = self.connection.cursor(buffered=True)
         products_found = []
         sql = f"SELECT * FROM {PRODUCT_DATABASE} WHERE id ={id}"
 
@@ -76,6 +79,8 @@ class Queries:
         return product_return
 
     def delete_product(self, id: int) ->str :
+        self.connection = connect_database()
+        self.mycursor = self.connection.cursor(buffered=True)
         sql = f"DELETE FROM {PRODUCT_DATABASE} WHERE id = {id}"
 
         self.mycursor.execute(sql)
@@ -85,6 +90,8 @@ class Queries:
         return "ok"
 
     def edit_product(self, id: int, product: ProductModel) -> str:
+        self.connection = connect_database()
+        self.mycursor = self.connection.cursor(buffered=True)
         sql = f"UPDATE {PRODUCT_DATABASE} SET Name = %s , Description = %s, Location = %s, FinderID = %s, Color = %s, LookerID = %s WHERE id = {id}"
         val = (product["name"], product["description"], product["location"], product["finder"], product["color"], product["looker"])
 
@@ -95,6 +102,8 @@ class Queries:
         return "ok"
 
     def change_status_product(self, id, found: bool, looker_id: int) -> str:
+        self.connection = connect_database()
+        self.mycursor = self.connection.cursor(buffered=True)
         sql = f"UPDATE {PRODUCT_DATABASE} SET LookerID = {looker_id}, Found = {found} WHERE id = {id}"
         self.mycursor.execute(sql)
 
@@ -106,6 +115,8 @@ class Queries:
     # LOCATEC USERS
 
     def create_user(self, user):
+        self.connection = connect_database()
+        self.mycursor = self.connection.cursor(buffered=True)
         sql = f"INSERT INTO {USERS_DATABASE} (Name, Tuiton, Rol) VALUES (%s, %s, %s)"
         val = (user["name"], user["tuiton"], user["rol"])
         self.mycursor.execute(sql, val)
@@ -115,6 +126,8 @@ class Queries:
         return "ok"
 
     def read_all_users(self) -> list:
+        self.connection = connect_database()
+        self.mycursor = self.connection.cursor(buffered=True)
         users_found = []
         self.mycursor.execute(f"SELECT * FROM {USERS_DATABASE}")
 
@@ -131,6 +144,8 @@ class Queries:
         return users_found
 
     def read_user(self, id: int):
+        self.connection = connect_database()
+        self.mycursor = self.connection.cursor(buffered=True)
         user_found = []
         sql = f"SELECT * FROM {USERS_DATABASE} WHERE id ={id}"
 
@@ -153,6 +168,8 @@ class Queries:
         return user_return
 
     def delete_user(self, id: int) ->str :
+        self.connection = connect_database()
+        self.mycursor = self.connection.cursor(buffered=True)
         sql = f"DELETE FROM {USERS_DATABASE} WHERE id = {id}"
 
         self.mycursor.execute(sql)
@@ -162,6 +179,8 @@ class Queries:
         return "ok"
 
     def edit_user(self, id: int, user) -> str:
+        self.connection = connect_database()
+        self.mycursor = self.connection.cursor(buffered=True)
         sql = f"UPDATE {USERS_DATABASE} SET Name = %s , Tuiton = %s, Rol = %s WHERE id = {id}"
         val = (user["name"], user["tuiton"], user["rol"])
 
@@ -172,6 +191,8 @@ class Queries:
         return "ok"
 
     def retrieve_tuiton(self, tuiton: str) -> str:
+        self.connection = connect_database()
+        self.mycursor = self.connection.cursor(buffered=True)
         user_found = []
         sql = f"SELECT id, Name FROM {USERS_DATABASE} WHERE Tuiton = '{tuiton}'"
 
