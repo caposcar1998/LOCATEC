@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -10,30 +10,43 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Upload from '../Helpers/Upload';
 
-function ModalCreate({show, setShow, setVariante, setMessageError, setShowAlert   }) {
+function ModalEdit({show, setShow, setVariante, setMessageError, setShowAlert, idProduct, nombre, description, uploadFile,  category, location, color, tuiton}) {
 
-    const [id, SetId] = useState(0)
-    const [nombre, setNombre] = useState("")
-    const [description, setDescription] = useState("")
-    const [matricula, setMatricula] = useState("")
-    const [location, setLocation] = useState("")
-    const [finder, setFinder] = useState("")
-    const [color, setColor] = useState("")
-    const [category, setCategory] = useState("")
-    const [uploadFile, setUploadFile] = useState(false)
-    const [urlFile, setUrlFile] = useState("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Nuvola_apps_error.svg/1200px-Nuvola_apps_error.svg.png")
+    const [idE, SetId] = useState(0)
+    const [nombreE, setNombre] = useState("")
+    const [descriptionE, setDescription] = useState("")
+    const [matriculaE, setMatricula] = useState("")
+    const [locationE, setLocation] = useState("")
+    const [finderE, setFinder] = useState("")
+    const [colorE, setColor] = useState("")
+    const [categoryE, setCategory] = useState("")
+    const [uploadFileE, setUploadFile] = useState(false)
+    const [urlFileE, setUrlFile] = useState("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Nuvola_apps_error.svg/1200px-Nuvola_apps_error.svg.png")
 
-    function createUser(){
-        axios.post(`${import.meta.env.VITE_APP_API}/product`,
+    useEffect(() => {
+        SetId(idProduct)
+        setNombre(nombre)
+        setMatricula(tuiton)
+        setDescription(description)
+        setLocation(location)
+        setColor(color)
+        setCategory(category)
+        setUrlFile(uploadFile)
+        findTuiton()
+      }, []);
+
+
+    function editUser(){
+        axios.put(`${import.meta.env.VITE_APP_API}/product/${idE}`,
             {
-                "name": nombre ,
-                "description": description,
-                "location": location,
-                "finder": id,
-                "color": color,
-                "looker": null,
-                "category": category,
-                "picture": urlFile
+                "name": nombreE ,
+                "description": descriptionE,
+                "location": locationE,
+                "finder": 1,
+                "color": colorE,
+                "finder": matriculaE,
+                "category": categoryE,
+                "picture": urlFileE
             })
         .then(response => {
             setShow(false)
@@ -48,17 +61,17 @@ function ModalCreate({show, setShow, setVariante, setMessageError, setShowAlert 
             setShow(false)
             console.log(e)
             setVariante("danger")
-            setMessageError("Error al crear el producto")
+            setMessageError("Error al editar el producto")
             setShowAlert(true)
         })   
     }
 
     function findTuiton(){
-        axios.get(`${import.meta.env.VITE_APP_API}/tuiton/${matricula}`).then(response => {
+        axios.get(`${import.meta.env.VITE_APP_API}/tuiton/${matriculaE}`).then(response => {
             if (response["data"]["code"] == 500){
                 setShow(false)
                 setVariante("warning")
-                setMessageError("La matricula no existe, favor de crear el usuario")
+                setMessageError("Error al editar el producto")
                 setShowAlert(true)
             }else{
                 SetId(response["data"]["result"]["ID"])
@@ -82,26 +95,26 @@ function ModalCreate({show, setShow, setVariante, setMessageError, setShowAlert 
     <>
             <Modal show={show} onHide={() => setShow(false)}>
                 <Modal.Header closeButton>
-                <Modal.Title>Crear nuevo producto</Modal.Title>
+                <Modal.Title>Editar producto</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                 <Container>
                     <Row>
                         <Col>
-                        <Form.Control type="text" placeholder="Nombre" value={nombre} onChange={event => setNombre(event.target.value)} /> 
+                        <Form.Control type="text" defaultValue={nombreE} placeholder="Nombre" value={nombreE} onChange={event => setNombre(event.target.value)} /> 
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                            <Form.Control type="text" placeholder="Descripcion" value={description} onChange={event => setDescription(event.target.value)} />
+                            <Form.Control type="text" defaultValue={descriptionE} placeholder="Descripcion" value={descriptionE} onChange={event => setDescription(event.target.value)} />
                         </Col>
                     </Row>
                     <Row>
                         <Col>
                             <DropdownButton
                                 variant="outline-secondary"
-                                title={location ? location : "Lugar"}
-                                defaultValue={""}
+                                title={locationE ? locationE : "Lugar"}
+                                defaultValue={locationE}
                                 >
                                     <Dropdown.Item value="Cenote" onClick={() => setLocation("Cenote")}>Cenote</Dropdown.Item>
                                     <Dropdown.Item value="Aulas 1" onClick={() => setLocation("Aulas 1")}>Aulas 1</Dropdown.Item>
@@ -119,8 +132,8 @@ function ModalCreate({show, setShow, setVariante, setMessageError, setShowAlert 
                         <Col>
                             <DropdownButton
                                     variant="outline-secondary"
-                                    title={category ? category : "Categoria"}
-                                    defaultValue={""}
+                                    title={categoryE ? categoryE : "Categoria"}
+                                    defaultValue={categoryE}
                                     >
                                         <Dropdown.Item value="Celular" onClick={() => setCategory("Celular")}>Celular</Dropdown.Item>
                                         <Dropdown.Item value="Computadora" onClick={() => setCategory("Computadora")}>Computadora</Dropdown.Item>
@@ -142,8 +155,8 @@ function ModalCreate({show, setShow, setVariante, setMessageError, setShowAlert 
                         <Col>
                         <DropdownButton
                                 variant="outline-secondary"
-                                title={color ? color : "Color"}
-                                defaultValue={""}
+                                title={colorE ? colorE : "Color"}
+                                defaultValue={colorE}
                                 >
                                     <Dropdown.Item value="Rojo" onClick={() => setColor("Rojo")}>Rojo</Dropdown.Item>
                                     <Dropdown.Item value="Morado" onClick={() => setColor("Morado")}>Morado</Dropdown.Item>
@@ -157,9 +170,7 @@ function ModalCreate({show, setShow, setVariante, setMessageError, setShowAlert 
                             </DropdownButton>
                         </Col>
                     </Row>
-                    {
-                        nombre && description && location && color && category
-                        &&
+
                         <Row>
                         <Col>
                             <Upload
@@ -168,28 +179,19 @@ function ModalCreate({show, setShow, setVariante, setMessageError, setShowAlert 
                             />
                         </Col>
                     </Row>
-                    }
-                    {
-                    nombre && description && location && color && category && uploadFile
-                    &&    
                         <>
                         <Row>
                         <Col>
-                            <Form.Control type="text" placeholder="Matricula" onChange={event => setMatricula(event.target.value)} />
+                            <Form.Control type="text" placeholder="Matricula" value={matriculaE} defaultValue={matriculaE} onChange={event => setMatricula(event.target.value)} />
                         </Col>
                         <Col>
                             <Button variant="primary" onClick={findTuiton}>Buscar por matricula</Button>
                         </Col>
                         </Row>
-                    <Row>{finder && finder}</Row>
+                    <Row>{finderE && finderE}</Row>
                     </>
-                    }
  
-                    {uploadFile && finder ?
-                        <Button variant="success" onClick={createUser}>Crear</Button>
-                    :
-                        <Button variant="success" disabled>Crear</Button>
-                    }
+                        <Button variant="success" onClick={editUser}>Editar</Button>
 
                     
                 </Container>
@@ -200,4 +202,4 @@ function ModalCreate({show, setShow, setVariante, setMessageError, setShowAlert 
   );
 }
 
-export default ModalCreate;
+export default ModalEdit;

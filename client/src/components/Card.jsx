@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 
-function CardD({name, description, pic, recover, idProduct, deleteA, found, looker, color, category, location}) {
+function CardD({name, description, pic, recover, idProduct, deleteA, found, looker, color, category, location, editProduct}) {
 
 
     const [a, setA] = useState("")
@@ -78,7 +78,7 @@ function CardD({name, description, pic, recover, idProduct, deleteA, found, look
                 </Card.Body>
                     <ListGroup className="list-group-flush">
                         <ListGroup.Item>Color: {color}</ListGroup.Item>
-                        <ListGroup.Item>Ubicación {location}</ListGroup.Item>
+                        <ListGroup.Item>Ubicación: {location}</ListGroup.Item>
                     </ListGroup>
                 <Card.Body>
                 {!isAuthenticated ?
@@ -87,7 +87,9 @@ function CardD({name, description, pic, recover, idProduct, deleteA, found, look
                     <>
                         <Button variant="success" onClick={()=> recover(idProduct)}>Recuperar</Button>
                         <Button variant="danger" onClick={()=> deleteA(idProduct)}>Eliminar</Button>
-                        <Button variant="warning">Editar</Button>
+                        <Button variant="warning" onClick={() => editProduct(
+                            idProduct, name, description, pic,  category, location, color, a
+                        )}>Editar</Button>
                     </>
                 }
             </Card.Body>
