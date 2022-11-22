@@ -27,11 +27,11 @@ CREATE TABLE IF NOT EXISTS product(
 
 INSERT INTO tecusers (Name, Tuiton, Rol)
         VALUES
-            ("Oscar Contreras Palacios", "A01655772", "Student"),
-            ("Óscar Alfredo Belmont Rodríguez", "A01654861", "Student"),
-            ("David Arturo Villanueva San Juan", "A01337636", "Student"),
-            ("Óscar Vargas Pérez", "A01657110", "Student"),
-            ("Raul", "A12347572", "Proffessor");
+            ("Oscar Contreras Palacios", "A01655772", "Estudiante"),
+            ("Óscar Alfredo Belmont Rodríguez", "A01654861", "Estudiante"),
+            ("David Arturo Villanueva San Juan", "A01337636", "Estudiante"),
+            ("Óscar Vargas Pérez", "A01657110", "Colaborador"),
+            ("Raul", "A12347572", "Profesor");
 
 INSERT INTO product ( Name, Description, Location, FinderID, Color, LookerID, Found, Category, Picture )
         VALUES

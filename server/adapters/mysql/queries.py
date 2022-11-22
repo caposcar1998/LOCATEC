@@ -92,8 +92,8 @@ class Queries:
     def edit_product(self, id: int, product: ProductModel) -> str:
         self.connection = connect_database()
         self.mycursor = self.connection.cursor(buffered=True)
-        sql = f"UPDATE {PRODUCT_DATABASE} SET Name = %s , Description = %s, Location = %s, FinderID = %s, Color = %s, LookerID = %s WHERE id = {id}"
-        val = (product["name"], product["description"], product["location"], product["finder"], product["color"], product["looker"])
+        sql = f"UPDATE {PRODUCT_DATABASE} SET Name = %s , Description = %s, Location = %s, FinderID = %s, Color = %s, LookerID = %s, Category = %s, Picture = %s WHERE id = {id}"
+        val = (product["name"], product["description"], product["location"], product["finder"], product["color"], product["looker"], product["category"], product["picture"])
 
         self.mycursor.execute(sql, val)
 
