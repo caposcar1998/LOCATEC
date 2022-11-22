@@ -6,11 +6,18 @@ import Search from './Helpers/Search';
 import CardD from './Card';
 import Col from 'react-bootstrap/esm/Col';
 import Row from "react-bootstrap/esm/Row";
+import { useNavigate } from "react-router-dom";
 
 function Home(){
 
     const [message, setMessage] = useState('');
     const [productsFound, setProductsFound] = useState([])
+
+    const navigate = useNavigate();
+      
+    function handleClick() {
+        navigate("/catalogo");
+    }
 
     return(
         <div class="contenedor">
@@ -48,6 +55,9 @@ function Home(){
                                 looker={item["Looker"]}
                                 color={item["Color"]}
                                 location={item["Location"]}
+                                editProduct={handleClick}
+                                deleteA={handleClick}
+                                recover={handleClick}
                                 />
                             </Col>
                             ))}
@@ -69,7 +79,7 @@ function Home(){
                         <Card.Text>
                             Tus objetos perdidos siempre estaran seguros con nosotros
                         </Card.Text>
-                        <Button variant="primary">Ir</Button>
+                        
                         </Card.Body>
                     </Card>
                     </div>
@@ -81,7 +91,7 @@ function Home(){
                         <Card.Text>
                             Encuentra tus productos a unos clicks de distancia
                         </Card.Text>
-                        <Button variant="primary">Ir</Button>
+                        
                         </Card.Body>
                     </Card>
                     </div>
@@ -93,7 +103,7 @@ function Home(){
                         <Card.Text>
                             Busca en cualquier momento tu producto perdido
                         </Card.Text>
-                        <Button variant="primary">Ir</Button>
+                        
                         </Card.Body>
                     </Card>
                     </div>

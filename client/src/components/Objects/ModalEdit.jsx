@@ -15,7 +15,7 @@ function ModalEdit({show, setShow, setVariante, setMessageError, setShowAlert, i
     const [idE, SetId] = useState(0)
     const [nombreE, setNombre] = useState("")
     const [descriptionE, setDescription] = useState("")
-    const [matriculaE, setMatricula] = useState("")
+    const [matriculaE, setMatricula] = useState("A01655772")
     const [locationE, setLocation] = useState("")
     const [finderE, setFinder] = useState("")
     const [colorE, setColor] = useState("")
@@ -31,7 +31,6 @@ function ModalEdit({show, setShow, setVariante, setMessageError, setShowAlert, i
         setLocation(location)
         setColor(color)
         setCategory(category)
-        setUrlFile(uploadFile)
         findTuiton()
       }, []);
 
@@ -44,7 +43,7 @@ function ModalEdit({show, setShow, setVariante, setMessageError, setShowAlert, i
                 "location": locationE,
                 "finder": 1,
                 "color": colorE,
-                "finder": matriculaE,
+                "looker": 1,
                 "category": categoryE,
                 "picture": urlFileE
             })
